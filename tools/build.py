@@ -269,6 +269,8 @@ def build_home():
       <p class="eyebrow">About me</p>
       <h2>An expatriate since 1994, and still enjoying it</h2>
       <blockquote class="pull">Listen first. Explain simply. That's most of what good advice is.</blockquote>
+    </div>
+    <div class="about-creds" data-reveal="up">
       <ul class="creds">
         <li>BA (Hons) Geography, University of Liverpool</li>
         <li>Postgraduate Diploma in Marketing (DipM), Member of the Chartered Institute of Marketing</li>
@@ -293,7 +295,7 @@ def build_home():
       <h2>Straight answers on money in France</h2>
       <a class="link-arrow" href="/blog/">All articles <span aria-hidden="true">→</span></a>
     </div>
-    <div class="post-list" data-reveal="stagger">
+    <div class="post-list rail" data-reveal="stagger">
 {latest}
     </div>
   </div>

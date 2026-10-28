@@ -100,8 +100,18 @@ if (hero) {
     const h = hero.getBoundingClientRect(), a = img.getBoundingClientRect();
     hero.style.setProperty("--sx", (((a.left - h.left) + a.width * 0.02) / h.width * 100).toFixed(2) + "%");
   };
-  placeSun();
-  addEventListener("resize", placeSun);
+  // On phones the layout stacks, so set the horizon from where Tim actually stands
+  const placeHorizon = () => {
+    const img = hero.querySelector(".portrait-img");
+    if (!img) return;
+    if (innerWidth > 900) { hero.style.removeProperty("--h"); return; }
+    // Measure the frame, not the image: the image is still rising during the entrance
+    const h = hero.getBoundingClientRect(), a = img.parentElement.getBoundingClientRect();
+    hero.style.setProperty("--h", ((a.top - h.top + img.offsetHeight * 0.62) / h.height * 100).toFixed(2) + "%");
+  };
+  const placeScene = () => { placeHorizon(); placeSun(); };
+  placeScene();
+  addEventListener("resize", placeScene);
 
   if (!calm) {
     // Tim drifts gently with the pointer; his backlight moves the other way. Fine pointers only.

@@ -89,6 +89,7 @@ FOOTER = f"""<footer class="site-footer">
 def page(path, title, description, body, current, extra_head=""):
     canonical = f'<link rel="canonical" href="{SITE}{path}">' if SITE else ""
     og_url = f'<meta property="og:url" content="{SITE}{path}">' if SITE else ""
+    preload = '<link rel="preload" as="image" href="/assets/tim-yates.jpg" fetchpriority="high">' if path == "/" else ""
     out = f"""<!doctype html>
 <html lang="en-GB">
 <head>
@@ -109,6 +110,7 @@ def page(path, title, description, body, current, extra_head=""):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
+{preload}
 {extra_head}
 </head>
 <body>
@@ -200,22 +202,38 @@ def build_home():
         "address": {"@type": "PostalAddress", "streetAddress": "Mediathel, 120 Route des Macarons", "postalCode": "06560", "addressLocality": "Valbonne", "addressCountry": "FR"},
         "alumniOf": "University of Liverpool",
     }
-    body = f"""<section class="hero">
-  <div class="wrap">
-    <div>
-      <p class="eyebrow">Financial adviser on the Côte d'Azur</p>
-      <h1>Clear financial advice for your life in France</h1>
-      <p class="lead">I'm Tim Yates. I help English-speaking people in the south of France invest tax-efficiently, finance the home they want, and get their money right for life here.</p>
-      <div class="btn-row">
-        <a class="btn" href="#contact">Book a conversation</a>
-        <a class="btn ghost" href="#services">How I can help</a>
+    body = f"""<section class="hero" aria-labelledby="hero-title">
+  <div class="scene" aria-hidden="true">
+    <div class="sky"></div>
+    <div class="sun"><span></span></div>
+    <svg class="ridge far" viewBox="0 0 1440 140" preserveAspectRatio="none"><path d="M0 140V96l70-10 60-22 50 12 70-30 60 18 80-26 70 22 90-6 90 18 100 4 120 14 140 4 160 8 280-2v40z"/></svg>
+    <svg class="ridge near" viewBox="0 0 1440 140" preserveAspectRatio="none"><path d="M0 140V82l48-6 42-30 34 16 46-40 40 28 52-34 44 30 60-12 58 30 72-6 66 22 90 8 120 16 160 4 200 6 308-2v54z"/></svg>
+    <div class="sea"><div class="glitter"></div></div>
+    <div class="horizon"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Financial adviser on the Côte d'Azur</p>
+      <h1 id="hero-title"><span class="line"><span>Your life on the Riviera,</span></span> <span class="line"><span><em>financially in order.</em></span></span></h1>
+      <p class="hero-lead">I'm Tim Yates. I help English-speaking people invest tax-efficiently, finance the home they want and settle with confidence in the south of France.</p>
+      <div class="hero-cta">
+        <a class="btn btn-sun" href="#contact">Book a conversation <span aria-hidden="true">→</span></a>
+        <a class="hero-link" href="#services">See how I help</a>
       </div>
     </div>
-    <figure>
-      <img src="/assets/tim-yates.jpg" alt="Portrait of Tim Yates" width="600" height="900" fetchpriority="high">
-      <figcaption><strong>Tim Yates</strong>Founding partner, The Spectrum IFA Group</figcaption>
+    <figure class="arch" data-tilt>
+      <div class="arch-frame">
+        <img src="/assets/tim-yates.jpg" alt="Portrait of Tim Yates" width="600" height="900" fetchpriority="high">
+      </div>
+      <figcaption><strong>Tim Yates</strong>Founding partner, Spectrum IFA</figcaption>
     </figure>
   </div>
+  <ul class="hero-proof wrap">
+    <li><strong>Since 1994</strong> an expatriate himself</li>
+    <li><strong>Founding partner</strong> of The Spectrum IFA Group</li>
+    <li><strong>Regulated in France</strong> ORIAS · ANACOFI-CIF</li>
+  </ul>
 </section>
 
 <section id="services">

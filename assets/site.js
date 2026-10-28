@@ -100,18 +100,21 @@ if (hero) {
     const h = hero.getBoundingClientRect(), a = img.getBoundingClientRect();
     hero.style.setProperty("--sx", (((a.left - h.left) + a.width * 0.02) / h.width * 100).toFixed(2) + "%");
   };
-  // On phones the layout stacks, so set the horizon from where Tim actually stands
+  // The horizon runs under Tim's shoulders, but never above the button, so the words stay on the sky
   const placeHorizon = () => {
     const img = hero.querySelector(".portrait-img");
     if (!img) return;
-    if (innerWidth > 900) { hero.style.removeProperty("--h"); return; }
     // Measure the frame, not the image: the image is still rising during the entrance
-    const h = hero.getBoundingClientRect(), a = img.parentElement.getBoundingClientRect();
-    hero.style.setProperty("--h", ((a.top - h.top + img.offsetHeight * 0.62) / h.height * 100).toFixed(2) + "%");
+    const h = hero.getBoundingClientRect(), frame = img.parentElement.getBoundingClientRect();
+    let y = frame.top - h.top + img.offsetHeight * 0.62;
+    const cta = hero.querySelector(".hero-cta");
+    if (cta && innerWidth > 900) y = Math.max(y, cta.getBoundingClientRect().bottom - h.top + 36);
+    hero.style.setProperty("--h", (y / h.height * 100).toFixed(2) + "%");
   };
   const placeScene = () => { placeHorizon(); placeSun(); };
   placeScene();
   addEventListener("resize", placeScene);
+  document.fonts?.ready.then(placeScene);
 
   if (!calm) {
     // Tim drifts gently with the pointer; his backlight moves the other way. Fine pointers only.

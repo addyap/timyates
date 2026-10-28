@@ -15,7 +15,7 @@ if (toggle && nav) {
   const setOpen = (open) => {
     nav.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.textContent = open ? "Close" : "Menu";
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     if (typeof updateHeader === "function") updateHeader();
   };
   toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
@@ -93,12 +93,13 @@ if (location.hash) {
 // Hero
 const hero = document.querySelector(".hero");
 if (hero) {
-  // Place the sun behind Tim's shoulder, at any screen width
+  // The afternoon sun stands high, just behind Tim's head, so he's lit from behind
   const placeSun = () => {
     const img = hero.querySelector(".portrait-img");
     if (!img) return;
-    const h = hero.getBoundingClientRect(), a = img.getBoundingClientRect();
-    hero.style.setProperty("--sx", (((a.left - h.left) + a.width * 0.02) / h.width * 100).toFixed(2) + "%");
+    const h = hero.getBoundingClientRect(), frame = img.parentElement.getBoundingClientRect();
+    hero.style.setProperty("--sx", ((frame.left - h.left + frame.width * 0.36) / h.width * 100).toFixed(2) + "%");
+    hero.style.setProperty("--sy", ((frame.top - h.top + img.offsetHeight * 0.1) / h.height * 100).toFixed(2) + "%");
   };
   // The horizon runs under Tim's shoulders, but never above the button, so the words stay on the sky
   const placeHorizon = () => {

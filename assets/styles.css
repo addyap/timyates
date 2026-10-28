@@ -175,38 +175,39 @@ details .answer p:last-child { margin-bottom: 0; }
 /* ============ Hero: "The view from here" ============ */
 .hero {
   --h: 80%;              /* horizon height */
-  --sx: 62%;             /* sun position, set by script to sit behind Tim's shoulder */
+  --sx: 62%;             /* sun position, set by script to sit behind Tim */
+  --sy: 24%;             /* the afternoon sun stands high in the sky */
   --ivory: #f7f1e3;
   --sun: #e9c46a;
   position: relative; isolation: isolate; overflow: hidden;
   min-height: min(100svh - 68px, 900px);
   display: flex; flex-direction: column; justify-content: center;
-  padding: 72px 0 0; color: var(--ivory); background: #0b2233;
+  padding: 72px 0 0; color: var(--ivory); background: #0e3a64;
 }
 .scene, .scene > * { position: absolute; inset: 0; pointer-events: none; }
 .scene { z-index: -1; }
 .scene { will-change: transform; }
 .sea { bottom: -40%; }
+/* A Riviera afternoon: deep azure overhead, pale haze at the horizon */
 .sky { background:
-  radial-gradient(120% 70% at var(--sx) var(--h), rgba(233,196,106,.55) 0%, rgba(201,140,84,.28) 22%, transparent 55%),
-  linear-gradient(180deg, #0a1f2e 0%, #10304a 38%, #23425a 62%, #7d6f5c 74%, #d9b27a var(--h)); }
-.sun { inset: auto; left: var(--sx); top: var(--h); width: 0; height: 0; }
-.sun span { position: absolute; left: -70px; top: -64px; width: 140px; height: 140px; border-radius: 50%;
-  background: radial-gradient(circle at 50% 45%, #fff3cf 0%, var(--sun) 45%, #c98e3e 100%);
-  box-shadow: 0 0 80px 30px rgba(233,196,106,.35), 0 0 220px 90px rgba(233,160,90,.18); }
+  radial-gradient(90% 60% at var(--sx) var(--sy), rgba(255,250,232,.38) 0%, rgba(255,240,205,.12) 30%, transparent 60%),
+  linear-gradient(180deg, #0c3a66 0%, #15528a 40%, #2668a5 64%, #4f8fc6 calc(var(--h) - 8%), #b7d9ef var(--h)); }
+.sun { inset: auto; left: var(--sx); top: var(--sy); width: 0; height: 0; }
+.sun span { position: absolute; left: -150px; top: -150px; width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, #fffef8 0%, #fffaea 12%, rgba(255,246,220,.75) 17%, rgba(255,240,205,.28) 30%, rgba(255,236,195,.1) 48%, transparent 70%); }
 .ridge { top: auto; height: 90px; bottom: calc(100% - var(--h)); width: 100%; }
-.ridge.far path { fill: #6e4a43; opacity: .55; }
+.ridge.far path { fill: #b07a64; opacity: .7; }   /* sunlit Esterel red rock, softened by haze */
 .ridge.near { height: 64px; }
-.ridge.near path { fill: #4a2a28; }   /* Esterel red porphyry at dusk */
-.sea { top: var(--h); background: linear-gradient(180deg, #2a4656 0%, #12334a 30%, #0b2638 100%); }
+.ridge.near path { fill: #8e4a35; }
+.sea { top: var(--h); background: linear-gradient(180deg, #2d79ad 0%, #155887 18%, #0d4470 45%, #0a3458 100%); }
 .glitter { position: absolute; left: var(--sx); top: 0; width: 46%; height: 100%; transform: translateX(-50%); overflow: hidden; opacity: .8;
   -webkit-mask: radial-gradient(50% 90% at 50% 0%, #000 0%, rgba(0,0,0,.5) 35%, transparent 70%);
           mask: radial-gradient(50% 90% at 50% 0%, #000 0%, rgba(0,0,0,.5) 35%, transparent 70%); }
 .glitter::before { content: ""; position: absolute; left: 0; right: 0; top: -26px; bottom: 0;
-  background: repeating-linear-gradient(180deg, rgba(255,226,160,0) 0 5px, rgba(255,226,160,.55) 5px 6px, rgba(255,226,160,0) 6px 13px);
+  background: repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 5px, rgba(255,255,255,.5) 5px 6px, rgba(255,255,255,0) 6px 13px);
   animation: shimmer 6s linear infinite; will-change: transform; }
 @keyframes shimmer { to { transform: translateY(26px); } }
-.horizon { top: var(--h); height: 1px; bottom: auto; background: linear-gradient(90deg, transparent, rgba(255,233,180,.9) 60%, rgba(255,233,180,.9) 84%, transparent);
+.horizon { top: var(--h); height: 1px; bottom: auto; background: linear-gradient(90deg, transparent, rgba(255,255,255,.85) 30%, rgba(255,255,255,.85) 85%, transparent);
   transform-origin: var(--sx) 50%; }
 .grain { opacity: .09; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
@@ -235,13 +236,13 @@ details .answer p:last-child { margin-bottom: 0; }
 .portrait { position: relative; z-index: 0; margin: 0 clamp(-48px, -3vw, 0px) clamp(-110px, -8vw, -40px) 0; justify-self: end; align-self: end; width: clamp(300px, 34vw, 480px); }
 .portrait-img { position: relative; display: block; width: 100%; height: auto;
   transform: translate3d(var(--px, 0px), var(--py, 0px), 0); transition: transform .9s var(--ease-soft);
-  filter: contrast(1.06) sepia(.08) drop-shadow(0 0 12px rgba(233,196,106,.3)) drop-shadow(-14px -4px 34px rgba(233,170,100,.2));
+  filter: contrast(1.06) sepia(.06) drop-shadow(0 0 10px rgba(255,250,235,.32)) drop-shadow(-10px -6px 30px rgba(255,244,214,.18));
   -webkit-mask-image: linear-gradient(to bottom, #000 56%, transparent 97%), linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image: linear-gradient(to bottom, #000 56%, transparent 97%), linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
   mask-composite: intersect; }
 .portrait-glow { position: absolute; left: 4%; right: 8%; top: 4%; height: 62%; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(closest-side, rgba(240,200,120,.34), rgba(233,160,90,.12) 62%, transparent);
+  background: radial-gradient(closest-side, rgba(255,250,232,.3), rgba(255,240,205,.1) 62%, transparent);
   transform: translate3d(calc(var(--px, 0px) * -0.6), calc(var(--py, 0px) * -0.6), 0); transition: transform .9s var(--ease-soft); }
 
 .hero-proof { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 0 auto; padding-top: 22px; padding-bottom: 26px;
@@ -459,10 +460,10 @@ p, li, .svc-desc { text-wrap: pretty; }
 
 /* Page headers: a small dusk */
 .page-head { position: relative; overflow: hidden; padding-bottom: 64px; color: var(--ivory);
-  background: radial-gradient(55% 130% at 84% 100%, rgba(233,196,106,.3), transparent 60%),
-              linear-gradient(180deg, #0a1f2e 0%, #12334a 70%, #2a4656 100%); }
+  background: radial-gradient(40% 90% at 84% 18%, rgba(255,250,232,.32), rgba(255,240,205,.08) 45%, transparent 70%),
+              linear-gradient(180deg, #0c3a66 0%, #15528a 60%, #2a6ca8 100%); }
 .page-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; transform-origin: 84% 50%;
-  background: linear-gradient(90deg, transparent, rgba(255,233,180,.85) 55%, rgba(255,233,180,.85) 92%, transparent); }
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.8) 30%, rgba(255,255,255,.8) 90%, transparent); }
 .page-head h1 { color: var(--ivory); }
 .page-head p { color: rgba(247,241,227,.8); }
 .page-head a { color: var(--sun); }
@@ -534,7 +535,7 @@ p, li, .svc-desc { text-wrap: pretty; }
 .page-head .eyebrow { font-size: .8rem; max-width: none; margin-bottom: .8em; }
 @media (max-width: 820px) { .svc-title { font-size: 1.2rem; } .svc-lead .svc-title { font-size: 1.5rem; } }
 /* Over a dark opening but scrolled: frosted dusk, so content never collides with the header */
-.js .dark-top .site-header.is-scrolled:not(.is-solid) { background: rgba(10,31,46,.72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom-color: rgba(247,241,227,.08); }
+.js .dark-top .site-header.is-scrolled:not(.is-solid) { background: rgba(12,58,102,.78); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom-color: rgba(247,241,227,.08); }
 
 /* ================= Mobile pass ================= */
 /* About: qualifications sit under the heading on desktop, after Tim's words on phones */
@@ -605,4 +606,25 @@ p, li, .svc-desc { text-wrap: pretty; }
 @media (min-width: 901px) {
   .hero-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); }
   .portrait { width: clamp(320px, 35vw, 520px); }
+}
+.hero-copy { text-shadow: 0 1px 18px rgba(8,40,74,.4); }
+.hero-copy .btn { text-shadow: none; }
+
+/* Hamburger: three lines that fold into an X */
+@media (max-width: 820px) {
+  .menu-toggle { display: grid; place-items: center; width: 44px; height: 44px; min-width: 0; padding: 0; border-radius: 12px; }
+}
+.burger, .burger > span, .burger::before, .burger::after { display: block; width: 20px; height: 2px; border-radius: 2px; background: currentColor; }
+.burger { position: relative; background: transparent; height: 14px; }
+.burger > span, .burger::before, .burger::after { position: absolute; left: 0; transition: transform var(--dur-ui) var(--ease-soft), opacity var(--dur-hover) var(--ease-soft), top var(--dur-ui) var(--ease-soft); }
+.burger::before { content: ""; top: 0; }
+.burger > span { top: 6px; }
+.burger::after { content: ""; top: 12px; }
+.menu-toggle[aria-expanded="true"] .burger::before { top: 6px; transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .burger > span { opacity: 0; transform: scaleX(.3); }
+.menu-toggle[aria-expanded="true"] .burger::after { top: 6px; transform: rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) { .burger > span, .burger::before, .burger::after { transition: none; } }
+@media (max-width: 900px) {
+  .sea { background: linear-gradient(180deg, #1d628f 0%, #124f7c 22%, #0d4470 50%, #0a3458 100%); }
+  .hero-eyebrow { color: var(--ivory); }
 }

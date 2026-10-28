@@ -42,7 +42,7 @@ def header(current):
       <img src="/assets/tim-avatar.jpg" alt="" width="40" height="40">
       <div><strong>Tim Yates</strong><span>Financial adviser · Côte d'Azur</span></div>
     </a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span class="burger" aria-hidden="true"><span></span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
       {' '.join(links)}
     </nav>

@@ -21,5 +21,7 @@ Everything on the site comes from his Spectrum profile pages. These are the poin
 - [ ] UK pension lump sum: "some can qualify for a favourable flat rate" in France.
 
 ## Before launch
-- [ ] Domain name. Then set SITE in tools/build.py (adds canonical links and a sitemap) and connect to Vercel.
+- [x] Connected to Vercel: live at https://timyates.vercel.app, deploys automatically from main.
+- [ ] Custom domain? If one is added, change SITE in tools/build.py and rebuild.
+- [ ] Submit the sitemap (https://timyates.vercel.app/sitemap.xml) to Google Search Console.
 - [ ] Note: Tim does not speak French. Keep the site from implying he does.

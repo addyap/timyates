@@ -2,6 +2,8 @@
 
 Personal site for Tim Yates, financial adviser on the Côte d'Azur (The Spectrum IFA Group).
 
+Live at https://timyates.vercel.app (Vercel deploys every push to main).
+
 Plain HTML and CSS, no framework.
 
 - Text for articles and FAQ: `tools/content.py`

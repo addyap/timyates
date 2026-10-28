@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://timyates.vercel.app/sitemap.xml

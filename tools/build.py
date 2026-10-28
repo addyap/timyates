@@ -13,8 +13,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from content import POSTS, FAQ  # noqa: E402
 
-# Set this once the domain is known; canonical links and the sitemap need it.
-SITE = ""
+# The live address. Change it when a custom domain is added; canonical links, share previews and the sitemap use it.
+SITE = "https://timyates.vercel.app"
 
 PHONE_OFFICE = "+33 (0)4 93 00 01 13"
 PHONE_OFFICE_TEL = "+33493000113"

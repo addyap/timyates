@@ -16,15 +16,22 @@ if (toggle && nav) {
     nav.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.textContent = open ? "Close" : "Menu";
+    if (typeof updateHeader === "function") updateHeader();
   };
   toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
   nav.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
   addEventListener("keydown", (e) => { if (e.key === "Escape" && nav.classList.contains("open")) { setOpen(false); toggle.focus(); } });
 }
 
-// Header separates from content once the page moves
+// Header: floats over a dark opening, turns solid past it (or while the menu is open)
 const header = document.querySelector(".site-header");
-if (header) onScroll.push((y) => header.classList.toggle("is-scrolled", y > 8));
+const opening = document.body.classList.contains("dark-top") ? document.querySelector("main > :first-child") : null;
+const updateHeader = (y = window.scrollY) => {
+  if (!header) return;
+  header.classList.toggle("is-scrolled", y > 8);
+  if (opening) header.classList.toggle("is-solid", !!nav?.classList.contains("open") || y > opening.offsetHeight - 80);
+};
+onScroll.push(updateHeader);
 
 // Scroll reveals: each element once, then forgotten
 const reveals = document.querySelectorAll("[data-reveal]");

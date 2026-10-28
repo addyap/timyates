@@ -25,3 +25,4 @@ Everything on the site comes from his Spectrum profile pages. These are the poin
 - [ ] Custom domain? If one is added, change SITE in tools/build.py and rebuild.
 - [ ] Submit the sitemap (https://timyates.vercel.app/sitemap.xml) to Google Search Console.
 - [ ] Note: Tim does not speak French. Keep the site from implying he does.
+- [ ] The About pull quote ("Listen first. Explain simply...") paraphrases his bio. Is he happy to be quoted like that?

@@ -58,14 +58,6 @@ FOOTER = f"""<footer class="site-footer">
         <p>Founding partner of The Spectrum IFA Group. Helping English-speaking people in the south of France with investments, mortgages and tax-efficient planning.</p>
       </div>
       <div>
-        <h3>Contact</h3>
-        <ul>
-          <li><a href="tel:{PHONE_MOBILE_TEL}">{PHONE_MOBILE}</a> (mobile)</li>
-          <li><a href="tel:{PHONE_OFFICE_TEL}">{PHONE_OFFICE}</a> (office)</li>
-          <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-        </ul>
-      </div>
-      <div>
         <h3>Explore</h3>
         <ul>
           <li><a href="/blog/">Articles</a></li>
@@ -86,7 +78,7 @@ FOOTER = f"""<footer class="site-footer">
 <script src="/assets/site.js" defer></script>"""
 
 
-def page(path, title, description, body, current, extra_head=""):
+def page(path, title, description, body, current, extra_head="", body_class=""):
     canonical = f'<link rel="canonical" href="{SITE}{path}">' if SITE else ""
     og_url = f'<meta property="og:url" content="{SITE}{path}">' if SITE else ""
     preload = '<link rel="preload" as="image" href="/assets/tim-yates.jpg" fetchpriority="high">' if path == "/" else ""
@@ -114,7 +106,7 @@ def page(path, title, description, body, current, extra_head=""):
 {preload}
 {extra_head}
 </head>
-<body>
+<body class="{body_class}">
 {header(current)}
 <main id="main">
 {body}
@@ -144,6 +136,10 @@ def contact_band():
       <h2>Let's have a conversation</h2>
       <p>Tell me a little about where you are now and what you'd like to sort out: a property purchase, savings you're not sure what to do with, or a move to France. I'll tell you honestly whether I can help, and if I can't, who can.</p>
       <p>I meet clients at the office in Valbonne, around the Var and Alpes-Maritimes, or by video call wherever you are.</p>
+      <div class="band-cta">
+        <a class="btn btn-sun" href="mailto:{EMAIL}?subject=A%20first%20conversation">Book a conversation <span aria-hidden="true">→</span></a>
+        <a class="hero-link" href="tel:{PHONE_MOBILE_TEL}">or call {PHONE_MOBILE}</a>
+      </div>
     </div>
     <ul class="contact-list" data-reveal="stagger" style="--d:200ms">
       <li><span>Mobile</span><a href="tel:{PHONE_MOBILE_TEL}">{PHONE_MOBILE}</a></li>
@@ -155,8 +151,9 @@ def contact_band():
 </section>"""
 
 
-def post_card(p):
-    return f"""<a class="post-card" href="/blog/{p['slug']}/">
+def post_card(p, feature=False):
+    cls = "post-card feature" if feature else "post-card"
+    return f"""<a class="{cls}" href="/blog/{p['slug']}/">
   <span class="tag">{esc(p['tag'])}</span>
   <h3 style="view-transition-name:post-{p['slug']}">{esc(p['title'])}</h3>
   <p>{esc(p['summary'])}</p>
@@ -164,6 +161,7 @@ def post_card(p):
 </a>"""
 
 
+# The first two are Tim's core work and lead the list.
 SERVICES = [
     ("Assurance vie and investments",
      "France's favourite savings wrapper, and often the most tax-efficient home for your savings once you live here. I help you choose, structure and keep it under review.",
@@ -188,8 +186,10 @@ SERVICES = [
 
 def build_home():
     services = "\n".join(
-        f'<div class="card"><h3>{esc(t)}</h3><p>{esc(d)}</p><a class="more" href="{href}">Read more</a></div>'
-        for t, d, href in SERVICES
+        f'<li class="svc-item{" svc-lead" if i < 2 else ""}"><a href="{href}">'
+        f'<span class="svc-num">{i + 1:02d}</span><span class="svc-title">{esc(t)}</span>'
+        f'<span class="svc-desc">{esc(d)}</span><span class="svc-arrow" aria-hidden="true">→</span></a></li>'
+        for i, (t, d, href) in enumerate(SERVICES)
     )
     latest = "\n".join(post_card(p) for p in POSTS[:3])
     person = {
@@ -227,7 +227,6 @@ def build_home():
       <div class="arch-frame">
         <img src="/assets/tim-yates.jpg" alt="Portrait of Tim Yates" width="600" height="900" fetchpriority="high">
       </div>
-      <figcaption><strong>Tim Yates</strong>Founding partner, Spectrum IFA</figcaption>
     </figure>
   </div>
   <ul class="hero-proof wrap">
@@ -244,9 +243,9 @@ def build_home():
       <h2>Your money, arranged for life in France</h2>
       <p class="muted">French tax, French banks and French paperwork follow their own logic. I've lived as an expatriate since 1994, so I know what it's like to work it out from the other side.</p>
     </div>
-    <div class="cards" data-reveal="stagger">
+    <ol class="svc" data-reveal="stagger">
 {services}
-    </div>
+    </ol>
   </div>
 </section>
 
@@ -270,6 +269,7 @@ def build_home():
     <div data-reveal="head">
       <p class="eyebrow">About me</p>
       <h2>An expatriate since 1994, and still enjoying it</h2>
+      <blockquote class="pull">Listen first. Explain simply. That's most of what good advice is.</blockquote>
       <ul class="creds">
         <li>BA (Hons) Geography, University of Liverpool</li>
         <li>Postgraduate Diploma in Marketing (DipM), Member of the Chartered Institute of Marketing</li>
@@ -279,7 +279,7 @@ def build_home():
       <img class="spectrum-logo" src="/assets/spectrum-logo.jpg" alt="The Spectrum IFA Group, International Financial Advisers" width="600" height="278" loading="lazy">
     </div>
     <div class="about-text" data-reveal="up" style="--d:160ms">
-      <p>Before financial services I spent my career in marketing and business development in the healthcare and pharmaceutical industry. That taught me to listen first and to explain complicated things simply, which turns out to be most of what good financial advice is.</p>
+      <p>Before financial services I spent my career in marketing and business development in the healthcare and pharmaceutical industry, where the job was always to understand what people really needed before offering anything.</p>
       <p>I'm a founding partner of The Spectrum IFA Group, which advises English-speaking clients across Europe, and I run Spectrum International Mortgages, the group's mortgage brokerage. My work centres on assurance vie, tax-efficient wealth management, and finding the right mortgage for each property purchase in France, including asset-backed lending.</p>
       <p>I live in Fréjus. When I'm not working you'll find me skiing in the Alps or diving in the Mediterranean.</p>
       <div class="btn-row"><a class="btn" href="#contact">Get in touch</a></div>
@@ -289,25 +289,25 @@ def build_home():
 
 <section class="alt">
   <div class="wrap">
-    <div class="section-head" data-reveal="head">
+    <div class="section-head split" data-reveal="head">
       <p class="eyebrow">Articles</p>
       <h2>Straight answers on money in France</h2>
+      <a class="link-arrow" href="/blog/">All articles <span aria-hidden="true">→</span></a>
     </div>
     <div class="post-list" data-reveal="stagger">
 {latest}
     </div>
-    <div class="btn-row"><a class="btn ghost" href="/blog/">All articles</a><a class="btn ghost" href="/faq/">Questions and answers</a></div>
   </div>
 </section>
 
 {contact_band()}"""
     return page("/", "Tim Yates | Financial adviser on the Côte d'Azur",
                 "Tim Yates helps English-speaking people in the south of France with assurance vie, tax-efficient investments, French mortgages and planning a move to France.",
-                body, "/", jsonld(person))
+                body, "/", jsonld(person), body_class="dark-top")
 
 
 def build_blog():
-    cards = "\n".join(post_card(p) for p in POSTS)
+    cards = "\n".join(post_card(p, feature=(i == 0)) for i, p in enumerate(POSTS))
     body = f"""<div class="page-head">
   <div class="wrap" data-reveal="head">
     <p class="eyebrow">Articles</p>
@@ -323,7 +323,7 @@ def build_blog():
   </div>
 </section>
 {contact_band()}"""
-    paths = [page("/blog/", "Articles | Tim Yates, financial adviser", "Plain-English guides to assurance vie, French mortgages and moving to France, by financial adviser Tim Yates.", body, "/blog/")]
+    paths = [page("/blog/", "Articles | Tim Yates, financial adviser", "Plain-English guides to assurance vie, French mortgages and moving to France, by financial adviser Tim Yates.", body, "/blog/", body_class="dark-top")]
     for p in POSTS:
         art = {
             "@context": "https://schema.org", "@type": "Article", "headline": p["title"],
@@ -381,7 +381,7 @@ def build_faq():
 {contact_band()}"""
     return page("/faq/", "Questions and answers | Tim Yates, financial adviser",
                 "Answers to common questions about assurance vie, French mortgages, UK pensions and ISAs in France, and working with Tim Yates.",
-                body, "/faq/", jsonld(data))
+                body, "/faq/", jsonld(data), body_class="dark-top")
 
 
 def build_404():
@@ -390,7 +390,7 @@ def build_404():
   <h1>That page isn't here</h1>
   <p>It may have moved. Try the <a href="/">home page</a>, the <a href="/blog/">articles</a> or the <a href="/faq/">questions and answers</a>.</p>
 </div></div>"""
-    page("/404.html", "Page not found | Tim Yates", "Page not found.", body, "")
+    page("/404.html", "Page not found | Tim Yates", "Page not found.", body, "", body_class="dark-top")
 
 
 def build_meta(paths):

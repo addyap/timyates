@@ -93,31 +93,30 @@ if (location.hash) {
 // Hero
 const hero = document.querySelector(".hero");
 if (hero) {
-  // Place the sun just off the arch's left edge, at any screen width
+  // Place the sun behind Tim's shoulder, at any screen width
   const placeSun = () => {
-    const arch = hero.querySelector(".arch-frame");
-    if (!arch) return;
-    const h = hero.getBoundingClientRect(), a = arch.getBoundingClientRect();
-    hero.style.setProperty("--sx", (((a.left - h.left) - a.width * 0.02) / h.width * 100).toFixed(2) + "%");
+    const img = hero.querySelector(".portrait-img");
+    if (!img) return;
+    const h = hero.getBoundingClientRect(), a = img.getBoundingClientRect();
+    hero.style.setProperty("--sx", (((a.left - h.left) + a.width * 0.02) / h.width * 100).toFixed(2) + "%");
   };
   placeSun();
   addEventListener("resize", placeSun);
 
   if (!calm) {
-    // Arch tilts towards the pointer; warm light follows it. Fine pointers only.
-    const frame = hero.querySelector(".arch-frame");
-    if (frame && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    // Tim drifts gently with the pointer; his backlight moves the other way. Fine pointers only.
+    const portrait = hero.querySelector(".portrait");
+    if (portrait && matchMedia("(hover: hover) and (pointer: fine)").matches) {
       hero.addEventListener("pointermove", (e) => {
-        const r = frame.getBoundingClientRect();
+        const r = hero.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - 0.5;
         const y = (e.clientY - r.top) / r.height - 0.5;
-        frame.style.setProperty("--ry", (x * 7).toFixed(2) + "deg");
-        frame.style.setProperty("--rx", (-y * 5).toFixed(2) + "deg");
-        frame.style.setProperty("--gx", ((x + 0.5) * 100).toFixed(1) + "%");
-        frame.style.setProperty("--gy", ((y + 0.5) * 100).toFixed(1) + "%");
+        portrait.style.setProperty("--px", (x * 14).toFixed(1) + "px");
+        portrait.style.setProperty("--py", (y * 8).toFixed(1) + "px");
       });
       hero.addEventListener("pointerleave", () => {
-        ["--rx", "--ry", "--gx", "--gy"].forEach((p) => frame.style.removeProperty(p));
+        portrait.style.removeProperty("--px");
+        portrait.style.removeProperty("--py");
       });
     }
     // Scene drifts slower than the page; the sun sinks into the sea; copy fades.

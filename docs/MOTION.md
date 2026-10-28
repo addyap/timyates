@@ -2,7 +2,7 @@
 
 **Idea: the tide at dusk.** The site's story is calm: your money settled, your life here unhurried. Motion should feel like the sea at golden hour: things rise and settle, never bounce, never rush. Two recurring motifs come from the hero:
 
-- **Rising.** Content enters upwards, the way the sun rises in the hero and the portrait rises into its arch.
+- **Rising.** Content enters upwards, the way the sun rises in the hero and Tim rises into the scene.
 - **The gold hairline.** The horizon line draws across in the hero; the same line draws in front of every section label, across the top of the contact band, and as the progress line in "How it works".
 
 Code: tokens and components in `assets/styles.css` (section "Motion system"), behaviour in `assets/site.js`. Markup hooks are `data-reveal` attributes written by `tools/build.py`.
@@ -43,11 +43,11 @@ Code: tokens and components in `assets/styles.css` (section "Motion system"), be
 | 0ms | Sky fades in (1.4s), sun rises 70px into place (2s) |
 | 100ms | Horizon hairline draws outward from the sun (1.4s, draw) |
 | 150ms | Eyebrow rises |
-| 200ms | Portrait wipes up into the arch (clip-path, 1.4s) |
+| 200ms | Tim rises 40px into the scene and fades in (1.6s); his backlight glows up from 500ms |
 | 250 / 400ms | Headline lines slide up out of their masks |
 | 600ms | Lead paragraph rises |
 | 750ms | Buttons rise |
-| 800ms+ | Arch outline, name card and proof strip fade in |
+| 1000ms | Proof strip fades in |
 
 **Inner pages:** the page header reveals at load: eyebrow hairline draws (0ms), heading wipes up (80ms), intro rises (160ms). Under 1s.
 
@@ -61,7 +61,7 @@ Code: tokens and components in `assets/styles.css` (section "Motion system"), be
 
 ## Image transitions
 
-- **Hero portrait:** wipes up into the arch (clip-path) while rising 30px.
+- **Hero portrait:** Tim is cut out of his background and stands in the dusk scene, backlit by a gold rim of light, his jacket dissolving into the sea. He rises 40px into place on load.
 - **Utility `data-reveal="image"`:** for any future photo. The frame wipes up (`clip-path`) while the image inside settles from `scale(1.08)` to 1 over 1.2s. Use it for at most one image per screen.
 - **Logos and avatars:** plain fade. Logos should never perform.
 
@@ -102,11 +102,11 @@ The only pinned moment, because it's the only place where the order matters.
 | Cards (services, articles) | Hover | Lift 4px, border turns gold, soft shadow. "Read more" underline draws left to right |
 | Nav links | Hover | Gold underline draws from the left (`scaleX`), retracts to the right on leave |
 | Contact links (dark band) | Hover | Underline draws, as nav |
-| Header | Scroll | After 8px, a hairline shadow appears (`--dur-hover`) so the header separates from the content |
+| Header | Scroll | Over a dark opening it starts transparent, turns frosted navy once you scroll, and becomes light past the dark section. On light pages a soft shadow appears after 8px |
 | Mobile menu | Open | Panel fades and drops 12px (`--dur-ui`), links follow 35ms apart. Label swaps Menu/Close |
 | FAQ | Open | Plus turns to minus (vertical bar rotates 90° and fades); answer height eases open and shut where the browser supports animating to `auto` (Chrome 131+); elsewhere it opens instantly. The answer text rises 8px |
 | Article | Scroll | 2px gold reading-progress bar along the top edge of the window |
-| Hero portrait | Pointer | Arch tilts up to 7°, warm light follows the pointer. Fine pointers only, never on touch |
+| Hero portrait | Pointer | Tim drifts up to 14px with the pointer while his backlight drifts the other way, for depth. Fine pointers only, never on touch |
 | Focus | Keyboard | Focus rings appear instantly. Never animated, never delayed |
 
 ## Transitions between pages
@@ -126,7 +126,7 @@ Sections alternate warm paper and sand backgrounds, with no animated dividers. C
 With `prefers-reduced-motion: reduce`:
 
 - All reveals are shown immediately, with no transforms.
-- The hero is a still image of the scene: no sun rise, shimmer, tilt or scroll drift.
+- The hero is a still image of the scene: no sun rise, shimmer, pointer drift or scroll drift.
 - Page transitions are off.
 - Hover lifts are off; colour changes stay.
 - The process line is full and every step is lit.

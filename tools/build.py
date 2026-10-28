@@ -39,7 +39,7 @@ def header(current):
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Tim Yates, home">
-      <img src="/assets/tim-square.jpg" alt="" width="40" height="40">
+      <img src="/assets/tim-avatar.jpg" alt="" width="40" height="40">
       <div><strong>Tim Yates</strong><span>Financial adviser · Côte d'Azur</span></div>
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -81,7 +81,7 @@ FOOTER = f"""<footer class="site-footer">
 def page(path, title, description, body, current, extra_head="", body_class=""):
     canonical = f'<link rel="canonical" href="{SITE}{path}">' if SITE else ""
     og_url = f'<meta property="og:url" content="{SITE}{path}">' if SITE else ""
-    preload = '<link rel="preload" as="image" href="/assets/tim-yates.jpg" fetchpriority="high">' if path == "/" else ""
+    preload = '<link rel="preload" as="image" href="/assets/tim-cutout.webp" type="image/webp" fetchpriority="high">' if path == "/" else ""
     out = f"""<!doctype html>
 <html lang="en-GB">
 <head>
@@ -223,10 +223,9 @@ def build_home():
         <a class="hero-link" href="#services">See how I help</a>
       </div>
     </div>
-    <figure class="arch" data-tilt>
-      <div class="arch-frame">
-        <img src="/assets/tim-yates.jpg" alt="Portrait of Tim Yates" width="600" height="900" fetchpriority="high">
-      </div>
+    <figure class="portrait">
+      <div class="portrait-glow" aria-hidden="true"></div>
+      <img class="portrait-img" src="/assets/tim-cutout.webp" alt="Portrait of Tim Yates" width="666" height="1000" fetchpriority="high">
     </figure>
   </div>
   <ul class="hero-proof wrap">
@@ -344,7 +343,7 @@ def build_blog():
     </div>
     <div class="note"><strong>General information, not advice.</strong> This article explains how things generally work. Rules and rates change, and the right answer depends on your circumstances, so please talk to me before acting on it.</div>
     <div class="author-box">
-      <img src="/assets/tim-square.jpg" alt="" width="72" height="72" loading="lazy">
+      <img src="/assets/tim-avatar.jpg" alt="" width="72" height="72" loading="lazy">
       <p><strong>Tim Yates</strong> is a founding partner of The Spectrum IFA Group, based on the Côte d'Azur. <a href="/#contact">Get in touch</a></p>
     </div>
   </div>

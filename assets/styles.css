@@ -628,30 +628,3 @@ p, li, .svc-desc { text-wrap: pretty; }
   .sea { background: linear-gradient(180deg, #1d628f 0%, #124f7c 22%, #0d4470 50%, #0a3458 100%); }
   .hero-eyebrow { color: var(--ivory); }
 }
-
-/* ================= Photo hero =================
-   The Esterel coast near Agay (Pexels, free licence) replaces the painted scene.
-   Navy shading on the left keeps the words readable over the sky. */
-.sky, .sun, .ridge, .sea, .horizon, .portrait-glow { display: none; }
-.hero { background: #1d4f7a; }
-.scene { background:
-  linear-gradient(0deg, rgba(8,30,50,.78) 0%, rgba(8,30,50,0) 30%),
-  linear-gradient(180deg, rgba(8,30,50,.5) 0%, rgba(8,30,50,0) 22%),
-  linear-gradient(90deg, rgba(8,30,50,.72) 0%, rgba(8,30,50,.5) 40%, rgba(8,30,50,.08) 72%, rgba(8,30,50,0) 100%),
-  url("/assets/riviera.webp") center 42% / cover no-repeat; }
-.grain { opacity: .05; }
-.hero-copy { text-shadow: 0 1px 16px rgba(8,30,50,.5); }
-.portrait-img { filter: contrast(1.05) drop-shadow(0 20px 40px rgba(8,30,50,.45)); }
-@media (prefers-reduced-motion: no-preference) { .scene { animation: fadeIn 1.2s ease-out both; } }
-
-/* Page headers: the same view, mostly sky */
-.page-head { background:
-  linear-gradient(90deg, rgba(8,30,50,.78) 0%, rgba(8,30,50,.55) 55%, rgba(8,30,50,.3) 100%),
-  url("/assets/riviera-sm.webp") center 30% / cover no-repeat, #1d4f7a; }
-
-/* Phones: Tim in front of the Esterel, the words on the darkened water */
-@media (max-width: 900px) {
-  .scene { background:
-    linear-gradient(0deg, rgba(8,30,50,.92) 0%, rgba(8,30,50,.7) 45%, rgba(8,30,50,.15) 70%, rgba(8,30,50,.35) 100%),
-    url("/assets/riviera-sm.webp") 70% 30% / cover no-repeat; }
-}

@@ -12,6 +12,7 @@
 <meta name="theme-color" content="#0c2a3c">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.jpg">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -27,13 +28,13 @@
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="/">Home</a> <a href="/#services">How I help</a> <a href="/#about">About</a> <a href="/blog/" aria-current="page">Articles</a> <a href="/faq/">FAQ</a> <a class="btn" href="/#contact">Get in touch</a>
+      <a href="/" style="--i:0">Home</a> <a href="/#services" style="--i:1">How I help</a> <a href="/#about" style="--i:2">About</a> <a href="/blog/" aria-current="page" style="--i:3">Articles</a> <a href="/faq/" style="--i:4">FAQ</a> <a class="btn" href="/#contact" style="--i:5">Get in touch</a>
     </nav>
   </div>
 </header>
 <main id="main">
 <div class="page-head">
-  <div class="wrap">
+  <div class="wrap" data-reveal="head">
     <p class="eyebrow">Articles</p>
     <h1>Money and life in France</h1>
     <p>Plain-English guides to the questions I'm asked most: saving, borrowing and settling in the south of France.</p>
@@ -41,43 +42,43 @@
 </div>
 <section>
   <div class="wrap">
-    <div class="post-list">
+    <div class="post-list" data-reveal="stagger">
 <a class="post-card" href="/blog/assurance-vie-explained/">
   <span class="tag">Investments</span>
-  <h3>Assurance vie explained: why it suits so many people living in France</h3>
+  <h3 style="view-transition-name:post-assurance-vie-explained">Assurance vie explained: why it suits so many people living in France</h3>
   <p>It isn&#x27;t life insurance in the British sense. It&#x27;s France&#x27;s most popular savings wrapper, and for French residents it can be remarkably tax-efficient.</p>
   <span class="meta">6 min read</span>
 </a>
 <a class="post-card" href="/blog/buying-a-home-in-france-with-a-mortgage/">
   <span class="tag">Mortgages</span>
-  <h3>Buying a home in France with a mortgage: how it really works</h3>
+  <h3 style="view-transition-name:post-buying-a-home-in-france-with-a-mortgage">Buying a home in France with a mortgage: how it really works</h3>
   <p>French lenders follow strict rules and the process runs in a different order from the UK. Knowing it in advance saves stress, and sometimes the purchase.</p>
   <span class="meta">7 min read</span>
 </a>
 <a class="post-card" href="/blog/asset-backed-mortgages/">
   <span class="tag">Mortgages</span>
-  <h3>Asset-backed mortgages: borrowing against your investments</h3>
+  <h3 style="view-transition-name:post-asset-backed-mortgages">Asset-backed mortgages: borrowing against your investments</h3>
   <p>Keep your portfolio invested and use it to secure the loan for your French property. Here&#x27;s how it works, who it suits, and the risks to weigh.</p>
   <span class="meta">5 min read</span>
 </a>
 <a class="post-card" href="/blog/moving-to-france-money-checklist/">
   <span class="tag">Moving to France</span>
-  <h3>Moving to France: a money checklist for before and after you arrive</h3>
+  <h3 style="view-transition-name:post-moving-to-france-money-checklist">Moving to France: a money checklist for before and after you arrive</h3>
   <p>Becoming French tax resident changes how your savings, ISAs and pensions are treated. These are the things to sort out, ideally before you move.</p>
   <span class="meta">7 min read</span>
 </a>
     </div>
   </div>
 </section>
-<section class="contact-band" id="contact">
+<section class="contact-band" id="contact" data-reveal="band">
   <div class="wrap contact-grid">
-    <div>
+    <div data-reveal="head">
       <p class="eyebrow">Get in touch</p>
       <h2>Let's have a conversation</h2>
       <p>Tell me a little about where you are now and what you'd like to sort out: a property purchase, savings you're not sure what to do with, or a move to France. I'll tell you honestly whether I can help, and if I can't, who can.</p>
       <p>I meet clients at the office in Valbonne, around the Var and Alpes-Maritimes, or by video call wherever you are.</p>
     </div>
-    <ul class="contact-list">
+    <ul class="contact-list" data-reveal="stagger" style="--d:200ms">
       <li><span>Mobile</span><a href="tel:+33615336083">+33 (0)6 15 33 60 83</a></li>
       <li><span>Office</span><a href="tel:+33493000113">+33 (0)4 93 00 01 13</a></li>
       <li><span>Email</span><a href="mailto:tim.yates@spectrum-ifa.com">tim.yates@spectrum-ifa.com</a></li>

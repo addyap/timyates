@@ -12,6 +12,7 @@
 <meta name="theme-color" content="#0c2a3c">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.jpg">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -28,17 +29,20 @@
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="/">Home</a> <a href="/#services">How I help</a> <a href="/#about">About</a> <a href="/blog/" aria-current="page">Articles</a> <a href="/faq/">FAQ</a> <a class="btn" href="/#contact">Get in touch</a>
+      <a href="/" style="--i:0">Home</a> <a href="/#services" style="--i:1">How I help</a> <a href="/#about" style="--i:2">About</a> <a href="/blog/" aria-current="page" style="--i:3">Articles</a> <a href="/faq/" style="--i:4">FAQ</a> <a class="btn" href="/#contact" style="--i:5">Get in touch</a>
     </nav>
   </div>
 </header>
 <main id="main">
+<div class="read-progress" aria-hidden="true"></div>
 <article class="article">
   <div class="wrap narrow">
-    <p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a></p>
-    <p class="eyebrow">Investments</p>
-    <h1>Assurance vie explained: why it suits so many people living in France</h1>
-    <p class="meta">By Tim Yates · 6 min read</p>
+    <header class="article-head" data-reveal="head">
+      <p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a></p>
+      <p class="eyebrow">Investments</p>
+      <h1 data-vt style="view-transition-name:post-assurance-vie-explained">Assurance vie explained: why it suits so many people living in France</h1>
+      <p class="meta">By Tim Yates · 6 min read</p>
+    </header>
     <div class="prose">
 <p>If you've moved to France you'll hear about <i lang="fr">assurance vie</i> within weeks. Your neighbours have one, your bank wants to sell you one, and your notaire will mention it the moment inheritance comes up. The name puts many British people off, because it sounds like life cover. It isn't. It's a savings and investment wrapper, and for most French residents it's the first place I look.</p>
 <h2>What it is</h2>
@@ -69,15 +73,15 @@
     </div>
   </div>
 </article>
-<section class="contact-band" id="contact">
+<section class="contact-band" id="contact" data-reveal="band">
   <div class="wrap contact-grid">
-    <div>
+    <div data-reveal="head">
       <p class="eyebrow">Get in touch</p>
       <h2>Let's have a conversation</h2>
       <p>Tell me a little about where you are now and what you'd like to sort out: a property purchase, savings you're not sure what to do with, or a move to France. I'll tell you honestly whether I can help, and if I can't, who can.</p>
       <p>I meet clients at the office in Valbonne, around the Var and Alpes-Maritimes, or by video call wherever you are.</p>
     </div>
-    <ul class="contact-list">
+    <ul class="contact-list" data-reveal="stagger" style="--d:200ms">
       <li><span>Mobile</span><a href="tel:+33615336083">+33 (0)6 15 33 60 83</a></li>
       <li><span>Office</span><a href="tel:+33493000113">+33 (0)4 93 00 01 13</a></li>
       <li><span>Email</span><a href="mailto:tim.yates@spectrum-ifa.com">tim.yates@spectrum-ifa.com</a></li>

@@ -12,6 +12,7 @@
 <meta name="theme-color" content="#0c2a3c">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.jpg">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -28,13 +29,13 @@
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="/">Home</a> <a href="/#services">How I help</a> <a href="/#about">About</a> <a href="/blog/">Articles</a> <a href="/faq/" aria-current="page">FAQ</a> <a class="btn" href="/#contact">Get in touch</a>
+      <a href="/" style="--i:0">Home</a> <a href="/#services" style="--i:1">How I help</a> <a href="/#about" style="--i:2">About</a> <a href="/blog/" style="--i:3">Articles</a> <a href="/faq/" aria-current="page" style="--i:4">FAQ</a> <a class="btn" href="/#contact" style="--i:5">Get in touch</a>
     </nav>
   </div>
 </header>
 <main id="main">
 <div class="page-head">
-  <div class="wrap">
+  <div class="wrap" data-reveal="head">
     <p class="eyebrow">Questions and answers</p>
     <h1>What people ask me</h1>
     <p>Short answers to common questions about investing, borrowing and living in France. If yours isn't here, just ask.</p>
@@ -42,7 +43,7 @@
 </div>
 <section>
   <div class="wrap narrow">
-<div class="faq-group" id="working"><h2>Working with me</h2>
+<div class="faq-group" id="working" data-reveal="up"><h2>Working with me</h2>
 <details><summary>Who do you usually help?</summary><div class="answer"><p>English-speaking people living in, or moving to, the south of France: retirees, families, people still working, and buyers of French property, whether they're resident here or not.</p></div></details>
 <details><summary>Where do we meet?</summary><div class="answer"><p>At the office in Valbonne, around the Var and Alpes-Maritimes, or by video call wherever you are. Plenty of my clients I first met on a screen.</p></div></details>
 <details><summary>Do I need to speak French?</summary><div class="answer"><p>No. We work in English throughout, and everything I give you is in English.</p></div></details>
@@ -51,40 +52,40 @@
 <details><summary>I live elsewhere in Europe. Can you help?</summary><div class="answer"><p>I'm based on the Côte d'Azur and focus on France, but The Spectrum IFA Group has advisers across Spain, Portugal, Italy, Malta, Switzerland and Luxembourg, and I can introduce you to a colleague.</p></div></details>
 <details><summary>Who regulates you?</summary><div class="answer"><p>I advise through TSG Insurance Services S.A.R.L., registered with ORIAS as an insurance broker and as a financial investment adviser (CIF) under ANACOFI-CIF, an association approved by the AMF, the French markets regulator. The full details are at the foot of every page.</p></div></details>
 </div>
-<div class="faq-group" id="investments"><h2>Savings and investments</h2>
+<div class="faq-group" id="investments" data-reveal="up"><h2>Savings and investments</h2>
 <details><summary>What is assurance vie?</summary><div class="answer"><p>A French savings and investment wrapper, not life cover in the British sense. Growth isn't taxed while it stays in the contract, withdrawals after eight years get a yearly allowance, and it can pass to your chosen beneficiaries with generous inheritance tax treatment. <a href="/blog/assurance-vie-explained/">Read the full guide.</a></p></div></details>
 <details><summary>Are my ISAs still tax-free if I live in France?</summary><div class="answer"><p>No. France doesn't recognise ISAs, so once you're French resident the income and gains are taxable here and need to be declared. It's worth reviewing them before you move.</p></div></details>
 <details><summary>Can I keep my savings in sterling?</summary><div class="answer"><p>Yes. Some international assurance vie contracts let you hold investments in sterling, euros or other currencies, which can help if you have commitments or family in the UK.</p></div></details>
 <details><summary>Is my money safe?</summary><div class="answer"><p>All investment carries risk, and the value of investments can fall as well as rise. What I can do is make sure the risk you take is the risk you intend, and that your money is held with well-regulated providers. Contracts with Luxembourg insurers, for example, come with strong legal protection for policyholders.</p></div></details>
 </div>
-<div class="faq-group" id="mortgages"><h2>Mortgages</h2>
+<div class="faq-group" id="mortgages" data-reveal="up"><h2>Mortgages</h2>
 <details><summary>Can I get a French mortgage if I don&#x27;t live in France?</summary><div class="answer"><p>Yes. French lenders do lend to non-residents, though they often ask for a larger deposit and look closely at your income and savings. <a href="/blog/buying-a-home-in-france-with-a-mortgage/">How the process works.</a></p></div></details>
 <details><summary>How much can I borrow?</summary><div class="answer"><p>French lenders generally cap total loan repayments at 35% of your income, including the new mortgage and its insurance, with terms of up to 25 years in most cases. Your deposit, savings and the type of income you have all matter too.</p></div></details>
 <details><summary>When should I speak to you?</summary><div class="answer"><p>Before you start viewing. Once you sign the preliminary contract, the time allowed to secure your mortgage is limited, so knowing your budget and your lender in advance makes everything calmer.</p></div></details>
 <details><summary>What is an asset-backed mortgage?</summary><div class="answer"><p>A loan secured against an investment portfolio rather than, or as well as, your income, so your investments stay invested. It can suit wealthier buyers, retirees and larger purchases, but it carries real risks if markets fall. <a href="/blog/asset-backed-mortgages/">Read more.</a></p></div></details>
 <details><summary>Do I need mortgage insurance?</summary><div class="answer"><p>In practice, yes: French lenders expect the loan to be covered. You're free to choose a policy other than the bank's own, which often costs less.</p></div></details>
 </div>
-<div class="faq-group" id="pensions"><h2>UK pensions in France</h2>
+<div class="faq-group" id="pensions" data-reveal="up"><h2>UK pensions in France</h2>
 <details><summary>How are UK pensions taxed if I live in France?</summary><div class="answer"><p>Most UK pensions, including the state pension and private and workplace pensions, are taxed in France once you're resident here. Government service pensions, for former civil servants, teachers, NHS staff, police and armed forces, for example, generally remain taxable only in the UK.</p></div></details>
 <details><summary>Is my 25% tax-free lump sum still tax-free?</summary><div class="answer"><p>Not automatically. France doesn't recognise the UK tax-free lump sum, though some pension lump sums can qualify for a favourable flat rate here if the conditions are met. The timing of when you draw it matters, so get advice before you do.</p></div></details>
 <details><summary>Should I transfer my UK pension to a QROPS?</summary><div class="answer"><p>For most people living in France, probably not any more. Since October 2024, most transfers to overseas pension schemes carry a 25% UK tax charge. There are usually better ways to make your UK pensions work well while you live here.</p></div></details>
 </div>
-<div class="faq-group" id="insurance"><h2>Insurance and protection</h2>
+<div class="faq-group" id="insurance" data-reveal="up"><h2>Insurance and protection</h2>
 <details><summary>Do I need private health insurance in France?</summary><div class="answer"><p>Once you're in the French health system, it pays a large share of most costs, and many people add a top-up policy for the rest. Before you qualify, or if you want wider cover, private medical insurance fills the gap. With colleagues across Spectrum, I can help you find the right cover.</p></div></details>
 <details><summary>Can you help with life insurance?</summary><div class="answer"><p>Yes, alongside the rest of your planning, whether it's cover to protect your family or the borrower insurance a French lender will expect on your mortgage.</p></div></details>
 </div>
     <div class="note"><strong>General information, not advice.</strong> These answers explain how things generally work. Rules and rates change, so please get advice on your own situation.</div>
   </div>
 </section>
-<section class="contact-band" id="contact">
+<section class="contact-band" id="contact" data-reveal="band">
   <div class="wrap contact-grid">
-    <div>
+    <div data-reveal="head">
       <p class="eyebrow">Get in touch</p>
       <h2>Let's have a conversation</h2>
       <p>Tell me a little about where you are now and what you'd like to sort out: a property purchase, savings you're not sure what to do with, or a move to France. I'll tell you honestly whether I can help, and if I can't, who can.</p>
       <p>I meet clients at the office in Valbonne, around the Var and Alpes-Maritimes, or by video call wherever you are.</p>
     </div>
-    <ul class="contact-list">
+    <ul class="contact-list" data-reveal="stagger" style="--d:200ms">
       <li><span>Mobile</span><a href="tel:+33615336083">+33 (0)6 15 33 60 83</a></li>
       <li><span>Office</span><a href="tel:+33493000113">+33 (0)4 93 00 01 13</a></li>
       <li><span>Email</span><a href="mailto:tim.yates@spectrum-ifa.com">tim.yates@spectrum-ifa.com</a></li>

@@ -31,10 +31,10 @@ def esc(s):
 
 def header(current):
     links = []
-    for href, label in NAV:
+    for i, (href, label) in enumerate(NAV):
         cur = ' aria-current="page"' if href == current else ""
-        links.append(f'<a href="{href}"{cur}>{label}</a>')
-    links.append('<a class="btn" href="/#contact">Get in touch</a>')
+        links.append(f'<a href="{href}"{cur} style="--i:{i}">{label}</a>')
+    links.append(f'<a class="btn" href="/#contact" style="--i:{len(NAV)}">Get in touch</a>')
     return f"""<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
@@ -106,6 +106,7 @@ def page(path, title, description, body, current, extra_head=""):
 <meta name="theme-color" content="#0c2a3c">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.jpg">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -136,15 +137,15 @@ def jsonld(data):
 
 
 def contact_band():
-    return f"""<section class="contact-band" id="contact">
+    return f"""<section class="contact-band" id="contact" data-reveal="band">
   <div class="wrap contact-grid">
-    <div>
+    <div data-reveal="head">
       <p class="eyebrow">Get in touch</p>
       <h2>Let's have a conversation</h2>
       <p>Tell me a little about where you are now and what you'd like to sort out: a property purchase, savings you're not sure what to do with, or a move to France. I'll tell you honestly whether I can help, and if I can't, who can.</p>
       <p>I meet clients at the office in Valbonne, around the Var and Alpes-Maritimes, or by video call wherever you are.</p>
     </div>
-    <ul class="contact-list">
+    <ul class="contact-list" data-reveal="stagger" style="--d:200ms">
       <li><span>Mobile</span><a href="tel:{PHONE_MOBILE_TEL}">{PHONE_MOBILE}</a></li>
       <li><span>Office</span><a href="tel:{PHONE_OFFICE_TEL}">{PHONE_OFFICE}</a></li>
       <li><span>Email</span><a href="mailto:{EMAIL}">{EMAIL}</a></li>
@@ -157,7 +158,7 @@ def contact_band():
 def post_card(p):
     return f"""<a class="post-card" href="/blog/{p['slug']}/">
   <span class="tag">{esc(p['tag'])}</span>
-  <h3>{esc(p['title'])}</h3>
+  <h3 style="view-transition-name:post-{p['slug']}">{esc(p['title'])}</h3>
   <p>{esc(p['summary'])}</p>
   <span class="meta">{p['minutes']} min read</span>
 </a>"""
@@ -238,34 +239,35 @@ def build_home():
 
 <section id="services">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal="head">
       <p class="eyebrow">How I help</p>
       <h2>Your money, arranged for life in France</h2>
       <p class="muted">French tax, French banks and French paperwork follow their own logic. I've lived as an expatriate since 1994, so I know what it's like to work it out from the other side.</p>
     </div>
-    <div class="cards">
+    <div class="cards" data-reveal="stagger">
 {services}
     </div>
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap">
-    <div class="section-head">
+<section class="alt process">
+  <div class="wrap process-grid">
+    <div class="process-head" data-reveal="head">
       <p class="eyebrow">How it works</p>
       <h2>Simple, and at your pace</h2>
+      <p class="muted">No jargon and no pressure. You decide how fast we go, and nothing happens until you're comfortable with it.</p>
     </div>
-    <ol class="steps">
-      <li><h3>A first conversation</h3><p>We talk about where you are, what you want, and what's worrying you. In person or by video, in plain English.</p></li>
-      <li><h3>A clear recommendation</h3><p>I look at the whole picture and set out what I suggest, why, and what it costs, in writing, before you commit to anything.</p></li>
-      <li><h3>Ongoing support</h3><p>Lives change and so do the rules. I keep your plan under review and I'm on the end of the phone when you need me.</p></li>
+    <ol class="steps" data-steps>
+      <li data-reveal="up"><h3>A first conversation</h3><p>We talk about where you are, what you want, and what's worrying you. In person or by video, in plain English.</p></li>
+      <li data-reveal="up"><h3>A clear recommendation</h3><p>I look at the whole picture and set out what I suggest, why, and what it costs, in writing, before you commit to anything.</p></li>
+      <li data-reveal="up"><h3>Ongoing support</h3><p>Lives change and so do the rules. I keep your plan under review and I'm on the end of the phone when you need me.</p></li>
     </ol>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap about">
-    <div>
+    <div data-reveal="head">
       <p class="eyebrow">About me</p>
       <h2>An expatriate since 1994, and still enjoying it</h2>
       <ul class="creds">
@@ -276,7 +278,7 @@ def build_home():
       </ul>
       <img class="spectrum-logo" src="/assets/spectrum-logo.jpg" alt="The Spectrum IFA Group, International Financial Advisers" width="600" height="278" loading="lazy">
     </div>
-    <div class="about-text">
+    <div class="about-text" data-reveal="up" style="--d:160ms">
       <p>Before financial services I spent my career in marketing and business development in the healthcare and pharmaceutical industry. That taught me to listen first and to explain complicated things simply, which turns out to be most of what good financial advice is.</p>
       <p>I'm a founding partner of The Spectrum IFA Group, which advises English-speaking clients across Europe, and I run Spectrum International Mortgages, the group's mortgage brokerage. My work centres on assurance vie, tax-efficient wealth management, and finding the right mortgage for each property purchase in France, including asset-backed lending.</p>
       <p>I live in Fréjus. When I'm not working you'll find me skiing in the Alps or diving in the Mediterranean.</p>
@@ -287,11 +289,11 @@ def build_home():
 
 <section class="alt">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal="head">
       <p class="eyebrow">Articles</p>
       <h2>Straight answers on money in France</h2>
     </div>
-    <div class="post-list">
+    <div class="post-list" data-reveal="stagger">
 {latest}
     </div>
     <div class="btn-row"><a class="btn ghost" href="/blog/">All articles</a><a class="btn ghost" href="/faq/">Questions and answers</a></div>
@@ -307,7 +309,7 @@ def build_home():
 def build_blog():
     cards = "\n".join(post_card(p) for p in POSTS)
     body = f"""<div class="page-head">
-  <div class="wrap">
+  <div class="wrap" data-reveal="head">
     <p class="eyebrow">Articles</p>
     <h1>Money and life in France</h1>
     <p>Plain-English guides to the questions I'm asked most: saving, borrowing and settling in the south of France.</p>
@@ -315,7 +317,7 @@ def build_blog():
 </div>
 <section>
   <div class="wrap">
-    <div class="post-list">
+    <div class="post-list" data-reveal="stagger">
 {cards}
     </div>
   </div>
@@ -328,12 +330,15 @@ def build_blog():
             "description": p["summary"], "datePublished": p["date"],
             "author": {"@type": "Person", "name": "Tim Yates"},
         }
-        body = f"""<article class="article">
+        body = f"""<div class="read-progress" aria-hidden="true"></div>
+<article class="article">
   <div class="wrap narrow">
-    <p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a></p>
-    <p class="eyebrow">{esc(p['tag'])}</p>
-    <h1>{esc(p['title'])}</h1>
-    <p class="meta">By Tim Yates · {p['minutes']} min read</p>
+    <header class="article-head" data-reveal="head">
+      <p class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a></p>
+      <p class="eyebrow">{esc(p['tag'])}</p>
+      <h1 data-vt style="view-transition-name:post-{p['slug']}">{esc(p['title'])}</h1>
+      <p class="meta">By Tim Yates · {p['minutes']} min read</p>
+    </header>
     <div class="prose">
 {p['body']}
     </div>
@@ -356,12 +361,12 @@ def build_faq():
         items = "\n".join(
             f'<details><summary>{esc(q)}</summary><div class="answer">{a}</div></details>' for q, a in g["items"]
         )
-        groups.append(f'<div class="faq-group" id="{g["id"]}"><h2>{esc(g["title"])}</h2>\n{items}\n</div>')
+        groups.append(f'<div class="faq-group" id="{g["id"]}" data-reveal="up"><h2>{esc(g["title"])}</h2>\n{items}\n</div>')
         for q, a in g["items"]:
             entities.append({"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}})
     data = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": entities}
     body = f"""<div class="page-head">
-  <div class="wrap">
+  <div class="wrap" data-reveal="head">
     <p class="eyebrow">Questions and answers</p>
     <h1>What people ask me</h1>
     <p>Short answers to common questions about investing, borrowing and living in France. If yours isn't here, just ask.</p>
@@ -380,7 +385,7 @@ def build_faq():
 
 
 def build_404():
-    body = """<div class="page-head"><div class="wrap">
+    body = """<div class="page-head"><div class="wrap" data-reveal="head">
   <p class="eyebrow">Page not found</p>
   <h1>That page isn't here</h1>
   <p>It may have moved. Try the <a href="/">home page</a>, the <a href="/blog/">articles</a> or the <a href="/faq/">questions and answers</a>.</p>

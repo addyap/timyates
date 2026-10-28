@@ -585,3 +585,15 @@ p, li, .svc-desc { text-wrap: pretty; }
 }
 @media (max-width: 900px) { .ridge { height: 46px; } .ridge.near { height: 32px; } }
 @media (max-width: 820px) { .article h1 { font-size: 1.95rem; } .article { padding-top: 40px; } }
+
+/* Phones: a poster. Tim against the dusk sky, the words on the water below him */
+@media (max-width: 900px) {
+  .js .dark-top .hero { padding-top: 76px; }
+  .hero-grid { gap: 0; }
+  .portrait { order: -1; justify-self: center; width: min(64%, 270px); margin: 0 auto -92px; }
+  .hero-copy { position: relative; z-index: 1; text-shadow: 0 1px 14px rgba(8,24,36,.55); }
+  .hero-copy .btn { text-shadow: none; }
+  .glitter { opacity: .45; }
+  .hero-proof { margin-top: 36px; }
+}
+@media (max-width: 820px) { .hero-cta, .band-cta { max-width: 440px; } }

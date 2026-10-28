@@ -628,3 +628,63 @@ p, li, .svc-desc { text-wrap: pretty; }
   .sea { background: linear-gradient(180deg, #1d628f 0%, #124f7c 22%, #0d4470 50%, #0a3458 100%); }
   .hero-eyebrow { color: var(--ivory); }
 }
+
+/* ================= Riviera daylight =================
+   A clear sky-blue day: soft cerulean overhead, white haze at the horizon,
+   sunlit Esterel rock and a deeper Mediterranean below. Navy text on the sky. */
+:root { --day-ink: #0c2a3c; --day-rock: #a3462a; }
+.hero { background: #8cc4ea; color: var(--day-ink); }
+.sky { background:
+  radial-gradient(70% 55% at var(--sx) var(--sy), rgba(255,253,240,.75) 0%, rgba(255,248,225,.25) 28%, transparent 60%),
+  linear-gradient(180deg, #6fb2e4 0%, #8cc4ea 35%, #b4daf2 62%, #dcedf8 calc(var(--h) - 4%), #f1f7fb var(--h)); }
+.sun span { background: radial-gradient(circle, #fffef6 0%, #fffbe9 14%, rgba(255,249,226,.7) 22%, rgba(255,246,215,.25) 40%, transparent 70%); }
+.ridge.far path { fill: #c99a84; opacity: .75; }
+.ridge.near path { fill: #a85a3c; }
+.sea { background: linear-gradient(180deg, #2b8cc4 0%, #1a73ad 16%, #11609a 42%, #0b4a7c 100%); }
+.horizon { background: linear-gradient(90deg, transparent, rgba(255,255,255,.95) 25%, rgba(255,255,255,.95) 85%, transparent); }
+.grain { opacity: .05; }
+
+.hero-copy { text-shadow: none; }
+.hero-eyebrow { color: #11609a; }
+.hero h1 { color: var(--day-ink); }
+.hero h1 em { color: var(--day-rock); }
+.hero-lead { color: rgba(12,42,60,.82); }
+.hero .btn-sun, .hero .btn.btn-sun { background: var(--day-ink); border-color: var(--day-ink); color: var(--ivory); }
+.hero .btn-sun:hover, .hero .btn.btn-sun:hover { background: #163e57; border-color: #163e57; color: #fff; box-shadow: 0 16px 36px -14px rgba(12,42,60,.6); }
+.hero-link { color: var(--day-ink); border-bottom-color: rgba(12,42,60,.35); }
+.hero-link:hover { color: var(--day-ink); border-color: var(--day-rock); }
+.hero :focus-visible { outline-color: var(--day-ink); }
+.portrait-img { filter: contrast(1.05) drop-shadow(0 18px 30px rgba(12,42,60,.18)); }
+.portrait-glow { background: radial-gradient(closest-side, rgba(255,253,240,.55), rgba(255,250,232,.15) 62%, transparent); }
+
+/* Page headers: the same clear sky, in miniature */
+.page-head { color: var(--day-ink);
+  background: radial-gradient(40% 90% at 84% 18%, rgba(255,253,240,.7), rgba(255,248,225,.2) 45%, transparent 70%),
+              linear-gradient(180deg, #6fb2e4 0%, #9ccdee 60%, #cfe7f6 100%); }
+.page-head h1 { color: var(--day-ink); }
+.page-head p { color: rgba(12,42,60,.8); }
+.page-head a, .page-head .eyebrow { color: #0d548a; }
+.page-head::after { background: linear-gradient(90deg, transparent, rgba(12,42,60,.25) 30%, rgba(12,42,60,.25) 90%, transparent); }
+
+/* Header over the sky: navy text until it turns solid */
+.js .dark-top .site-header:not(.is-solid) .brand strong { color: var(--day-ink); }
+.js .dark-top .site-header:not(.is-solid) .brand span { color: rgba(12,42,60,.7); }
+.js .dark-top .site-header:not(.is-solid) .menu-toggle { color: var(--day-ink); border-color: rgba(12,42,60,.3); }
+@media (min-width: 821px) {
+  .js .dark-top .site-header:not(.is-solid) .nav a:not(.btn) { color: var(--day-ink); }
+  .js .dark-top .site-header:not(.is-solid) .nav a[aria-current="page"] { color: var(--day-rock); }
+  .js .dark-top .site-header:not(.is-solid) .nav a:not(.btn)::after { background: var(--day-rock); }
+  .js .dark-top .site-header:not(.is-solid) .nav .btn { background: var(--day-ink); border-color: var(--day-ink); color: var(--ivory); }
+}
+
+/* Phones: the words sit on the water, so they stay light */
+@media (max-width: 900px) {
+  .hero-copy { text-shadow: 0 1px 14px rgba(8,24,36,.45); }
+  .hero-eyebrow, .hero h1 { color: var(--ivory); }
+  .hero h1 em { color: var(--sun); }
+  .hero-lead { color: rgba(247,241,227,.9); }
+  .hero .btn-sun, .hero .btn.btn-sun { background: var(--sun); border-color: var(--sun); color: #1b1a12; }
+  .hero .btn-sun:hover, .hero .btn.btn-sun:hover { background: #f3d58b; border-color: #f3d58b; color: #1b1a12; }
+  .hero-link, .hero-link:hover { color: var(--ivory); }
+  .hero :focus-visible { outline-color: var(--sun); }
+}

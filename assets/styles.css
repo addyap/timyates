@@ -258,8 +258,8 @@ details .answer p:last-child { margin-bottom: 0; }
   .ridge { animation: fadeUp 1.4s ease-out .3s both; }
   .hero-eyebrow { animation: fadeUp .8s ease-out .15s both; }
   .hero h1 .line > span { animation: lineUp 1.1s var(--ease-settle) both; }
-  .hero h1 .line:nth-child(1) > span { animation-delay: .25s; }
-  .hero h1 .line:nth-child(2) > span { animation-delay: .4s; }
+  .hero h1 .line:nth-child(1) > span { animation-delay: .1s; }
+  .hero h1 .line:nth-child(2) > span { animation-delay: .22s; }
   .hero-lead { animation: fadeUp .9s ease-out .6s both; }
   .hero-cta { animation: fadeUp .9s ease-out .75s both; }
   .portrait-img { animation: portraitIn 1.6s var(--ease-settle) .2s both; }

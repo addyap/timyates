@@ -40,7 +40,7 @@ Code: tokens and components in `assets/styles.css` (section "Motion system"), be
 
 | Time | What |
 |---|---|
-| 0ms | Villefranche photo fades in (0.5s) |
+| 0ms | Villefranche photo fades in (0.5s); on phones the photo and Tim show from the first frame, for PageSpeed |
 | 50ms | Eyebrow rises (0.5s); Tim rises 40px into the scene and fades in (0.9s) |
 | 50 / 140ms | Headline lines slide up out of their masks (0.75s) |
 | 300ms | Lead paragraph rises (0.6s) |

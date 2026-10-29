@@ -25,7 +25,7 @@ PHONE_MOBILE = "+33 (0)6 15 33 60 83"
 PHONE_MOBILE_TEL = "+33615336083"
 EMAIL = "tim.yates@spectrum-ifa.com"
 
-NAV = [("/", "Home"), ("/#services", "How I help"), ("/#about", "About"), ("/blog/", "Articles"), ("/faq/", "FAQ")]
+NAV = [("/", "Home"), ("/#services", "How I help"), ("/#about", "About"), ("/#spectrum", "Spectrum"), ("/blog/", "Articles"), ("/faq/", "FAQ")]
 
 
 def esc(s):
@@ -61,9 +61,9 @@ def header(current):
     return f"""<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Tim Yates, home">
+    <a class="brand" href="/" aria-label="Tim Yates, The Spectrum IFA Group, home">
       <img src="/assets/tim-avatar.jpg" alt="" width="40" height="40">
-      <div><strong>Tim Yates</strong><span>Financial adviser · Côte d'Azur</span></div>
+      <div><strong>Tim Yates</strong><span class="brand-group"><img src="/assets/spectrum-mark.webp" alt="" width="14" height="14">The Spectrum IFA Group</span></div>
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span class="burger" aria-hidden="true"><span></span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
@@ -87,7 +87,7 @@ FOOTER = f"""<footer class="site-footer">
           <li><a href="/faq/">Questions and answers</a></li>
           <li><a href="https://spectrum-ifa.com/" rel="noopener">The Spectrum IFA Group</a></li>
         </ul>
-        <a class="footer-mark" href="https://spectrum-ifa.com/" rel="noopener"><img src="/assets/spectrum-mark.png" alt="" width="34" height="34" loading="lazy"><span>Part of The Spectrum IFA Group</span></a>
+        <a class="footer-logo" href="https://spectrum-ifa.com/" rel="noopener"><img src="/assets/spectrum-logo.webp" alt="Part of The Spectrum IFA Group, International Financial Advisers" width="480" height="223" loading="lazy"></a>
       </div>
     </div>
     <div class="legal">
@@ -173,6 +173,7 @@ def contact_band():
       <li><span>Mobile</span><a href="tel:{PHONE_MOBILE_TEL}">{PHONE_MOBILE}</a></li>
       <li><span>Office</span><a href="tel:{PHONE_OFFICE_TEL}">{PHONE_OFFICE}</a></li>
       <li><span>Email</span><a href="mailto:{EMAIL}">{EMAIL}</a></li>
+      <li><span>Group</span><a href="https://spectrum-ifa.com/" rel="noopener">The Spectrum IFA Group</a></li>
       <li><span>Office address</span>Mediathel, 120 Route des Macarons<br>06560 Valbonne, France</li>
     </ul>
   </div>
@@ -243,7 +244,7 @@ def build_home():
   </div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="hero-eyebrow">Financial adviser on the Côte d'Azur</p>
+      <p class="hero-eyebrow">Financial adviser · The Spectrum IFA Group</p>
       <h1 id="hero-title"><span class="line"><span>Your life on the Riviera,</span></span> <span class="line"><span><em>financially in order.</em></span></span></h1>
       <p class="hero-lead">I'm Tim Yates. I help English-speaking people invest tax-efficiently, finance the home they want and settle with confidence in the south of France.</p>
       <div class="hero-cta">
@@ -258,7 +259,7 @@ def build_home():
   </div>
   <ul class="hero-proof wrap">
     <li><strong>Since 1994</strong> an expatriate himself</li>
-    <li><strong>Founding partner</strong> of The Spectrum IFA Group</li>
+    <li class="proof-spectrum"><img src="/assets/spectrum-mark.webp" alt="" width="34" height="34"><span><strong>Founding partner</strong> of The Spectrum IFA Group</span></li>
     <li><strong>Regulated in France</strong> ORIAS · ANACOFI-CIF</li>
   </ul>
 </section>
@@ -305,13 +306,37 @@ def build_home():
         <li>Member of the Chartered Insurance Institute, Certificate in Financial Planning</li>
         <li>Co-gérant, Spectrum International Mortgages SARL</li>
       </ul>
-      <img class="spectrum-logo" src="/assets/spectrum-logo.webp" alt="The Spectrum IFA Group, International Financial Advisers" width="480" height="223" loading="lazy">
     </div>
     <div class="about-text" data-reveal="up" style="--d:160ms">
       <p>Before financial services I spent my career in marketing and business development in the healthcare and pharmaceutical industry, where the job was always to understand what people really needed before offering anything.</p>
       <p>I'm a founding partner of The Spectrum IFA Group, which advises English-speaking clients across Europe, and I run Spectrum International Mortgages, the group's mortgage brokerage. My work centres on assurance vie, tax-efficient wealth management, and finding the right mortgage for each property purchase in France, including asset-backed lending.</p>
       <p>I live in Fréjus. When I'm not working you'll find me skiing in the Alps or diving in the Mediterranean.</p>
       <div class="btn-row"><a class="btn" href="#contact">Get in touch</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="spectrum" id="spectrum" aria-labelledby="spectrum-title">
+  <div class="wrap spectrum-grid">
+    <div class="spectrum-brand" data-reveal="up">
+      <a href="https://spectrum-ifa.com/" rel="noopener"><img src="/assets/spectrum-logo.webp" alt="The Spectrum IFA Group, International Financial Advisers" width="480" height="223" loading="lazy"></a>
+      <ul class="spectrum-facts">
+        <li><strong>2003</strong>established</li>
+        <li><strong>50+</strong>advisers across Europe</li>
+        <li><strong>7</strong>countries</li>
+      </ul>
+    </div>
+    <div class="spectrum-copy" data-reveal="head">
+      <p class="eyebrow">Part of The Spectrum IFA Group</p>
+      <h2 id="spectrum-title">Local advice, backed by a group across Europe</h2>
+      <p>I'm a founding partner of The Spectrum IFA Group. Since 2003 the group has advised expatriates and foreign residents in France, Spain, Portugal, Italy, Switzerland, Luxembourg and Malta. Each of its advisers lives in the community they serve.</p>
+      <p>Your planning can also cross borders with you: if life takes you from France to Spain, or back to the UK, Spectrum colleagues there can carry it on.</p>
+      <ul class="spectrum-links">
+        <li><a href="https://spectrum-ifa.com/spectrum-ifa-client-charter/" rel="noopener">Spectrum's client charter</a></li>
+        <li><a href="https://spectrum-ifa.com/the-spectrum-ifa-group-reviews/" rel="noopener">Client reviews</a></li>
+        <li><a href="https://spectrum-ifa.com/french-tax-guide-2020/" rel="noopener">Free French tax guide</a></li>
+        <li><a href="https://spectrum-ifa.com/" rel="noopener">spectrum-ifa.com</a></li>
+      </ul>
     </div>
   </div>
 </section>

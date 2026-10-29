@@ -9,6 +9,12 @@ Everything on the site comes from his Spectrum profile pages. These are the poin
 - [ ] OK to use the Spectrum photo and logo. Does Spectrum need to approve the site? Financial promotions may need their compliance sign-off.
 - [ ] The regulatory footer is copied from spectrum-ifa.com. Is it the right entity for Tim?
 
+## Spectrum branding (added 29 October 2026)
+- [ ] The Spectrum logo, mark and name now appear in the header of every page, the hero, a new "Part of The Spectrum IFA Group" section, the contact details and the footer. Is Spectrum happy with that level of use, and does it need their marketing or compliance sign-off?
+- [ ] Group facts are taken from spectrum-ifa.com/about-us: established January 2003, over 50 advisers across Europe, 7 countries (France, Spain, Portugal, Italy, Switzerland, Luxembourg, Malta). Still current?
+- [ ] "Spectrum colleagues there can carry it on" (cross-border planning) paraphrases Spectrum's About page. OK to say?
+- [ ] Links to Spectrum's client charter, reviews page and French tax guide. The tax guide URL says 2020; is there a newer one?
+
 ## How he works
 - [ ] "How are you paid?": the answer only says he explains it in writing first. Add specifics?
 - [ ] "Is the first conversation an obligation?": says no obligation; doesn't say it's free. Is it?

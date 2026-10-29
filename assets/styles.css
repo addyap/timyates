@@ -671,3 +671,38 @@ p, li, .svc-desc { text-wrap: pretty; }
 .js .dark-top .site-header:not(.is-solid) .brand span { color: rgba(247,241,227,.82); }
 .js .dark-top .site-header.is-scrolled:not(.is-solid) { background: rgba(8,30,50,.72); }
 .js .dark-top .site-header:not(.is-solid) .brand img { box-shadow: 0 0 0 1px rgba(247,241,227,.35); }
+
+/* ================= The Spectrum IFA Group =================
+   Spectrum's own identity: white, olive gold #957B00 and slate #474D5D, the gold diamond mark.
+   It now shows under Tim's name on every page, in the hero, in its own section and in the footer. */
+:root { --sp-gold: #957b00; --sp-slate: #474d5d; }
+.brand .brand-group { display: flex; align-items: center; gap: 6px; }
+.brand .brand-group img { width: 14px; height: 14px; border-radius: 0; flex: none; }
+
+.spectrum { background: #fff; border-top: 3px solid var(--sp-gold); color: var(--sp-slate); }
+.spectrum-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.spectrum-brand img { display: block; width: 100%; max-width: 360px; height: auto; }
+.spectrum-facts { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 12px 36px;
+  border-top: 1px solid rgba(149,123,0,.3); padding-top: 22px; }
+.spectrum-facts li { font-size: .85rem; line-height: 1.35; max-width: 9em; }
+.spectrum-facts strong { display: block; font-family: var(--serif); font-weight: 500; font-size: 2.2rem; line-height: 1.05; color: var(--sp-gold); margin-bottom: 4px; }
+.spectrum .eyebrow { color: var(--sp-gold); }
+.spectrum h2 { color: #2b2f3a; }
+.spectrum-copy > p:not(.eyebrow) { font-size: 1.05rem; line-height: 1.7; max-width: 36em; }
+.spectrum-links { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.spectrum-links a { display: inline-block; padding: 9px 16px; border: 1px solid rgba(149,123,0,.45); border-radius: 999px; color: #6f5c00; font-weight: 600; font-size: .9rem; text-decoration: none;
+  transition: background-color var(--dur-hover) var(--ease-soft), color var(--dur-hover) var(--ease-soft), border-color var(--dur-hover) var(--ease-soft); }
+.spectrum-links a:hover { background: var(--sp-gold); border-color: var(--sp-gold); color: #fff; }
+@media (max-width: 820px) {
+  .spectrum-grid { grid-template-columns: 1fr; gap: 36px; }
+  .spectrum-brand img { max-width: 260px; }
+  .spectrum-facts { gap: 12px 24px; }
+  .spectrum-facts strong { font-size: 1.8rem; }
+}
+
+/* Footer: the full Spectrum logo on a white panel */
+.footer-logo { display: inline-block; margin-top: 20px; background: #fff; border-radius: 10px; padding: 12px 16px; }
+.footer-logo img { display: block; width: 200px; height: auto; }
+.hero-proof .proof-spectrum { display: flex; align-items: center; gap: 12px; }
+.hero-proof .proof-spectrum img { width: 34px; height: 34px; flex: none; }
+@media (max-width: 900px) { .hero-proof .proof-spectrum img { width: 24px; height: 24px; } }

@@ -81,7 +81,10 @@ FOOTER = f"""<footer class="site-footer">
 def page(path, title, description, body, current, extra_head="", body_class=""):
     canonical = f'<link rel="canonical" href="{SITE}{path}">' if SITE else ""
     og_url = f'<meta property="og:url" content="{SITE}{path}">' if SITE else ""
-    preload = '<link rel="preload" as="image" href="/assets/tim-cutout.webp" type="image/webp" fetchpriority="high">' if path == "/" else ""
+    # The hero photo is a CSS background, so preload it or it waits for the stylesheet
+    preload = ('<link rel="preload" as="image" href="/assets/tim-cutout.webp" type="image/webp" fetchpriority="high">\n'
+               '<link rel="preload" as="image" href="/assets/riviera.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">\n'
+               '<link rel="preload" as="image" href="/assets/riviera-sm.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high">') if path == "/" else ""
     out = f"""<!doctype html>
 <html lang="en-GB">
 <head>

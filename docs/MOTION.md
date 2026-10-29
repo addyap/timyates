@@ -36,11 +36,11 @@ Code: tokens and components in `assets/styles.css` (section "Motion system"), be
 
 ## Loading sequences
 
-**Home (hero), total about 0.9s to fully readable** (shortened so the headline paints early for PageSpeed):
+**Home (hero), total about 0.9s to fully readable** (shortened so the headline paints early for PageSpeed). **Desktop only:** on phones (900px and narrower) the hero is complete from the first frame, because PageSpeed's throttled phone test counts every entrance frame against Speed Index:
 
 | Time | What |
 |---|---|
-| 0ms | Villefranche photo fades in (0.5s); on phones the photo and Tim show from the first frame, for PageSpeed |
+| 0ms | Villefranche photo fades in (0.5s) |
 | 50ms | Eyebrow rises (0.5s); Tim rises 40px into the scene and fades in (0.9s) |
 | 50 / 140ms | Headline lines slide up out of their masks (0.75s) |
 | 300ms | Lead paragraph rises (0.6s) |

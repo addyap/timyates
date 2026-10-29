@@ -127,7 +127,8 @@ def page(path, title, description, body, current, extra_head="", body_class=""):
 <script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/styles.css">
 {preload}
 {extra_head}
@@ -303,7 +304,7 @@ def build_home():
         <li>Member of the Chartered Insurance Institute, Certificate in Financial Planning</li>
         <li>Co-gérant, Spectrum International Mortgages SARL</li>
       </ul>
-      <img class="spectrum-logo" src="/assets/spectrum-logo.jpg" alt="The Spectrum IFA Group, International Financial Advisers" width="600" height="278" loading="lazy">
+      <img class="spectrum-logo" src="/assets/spectrum-logo.webp" alt="The Spectrum IFA Group, International Financial Advisers" width="480" height="223" loading="lazy">
     </div>
     <div class="about-text" data-reveal="up" style="--d:160ms">
       <p>Before financial services I spent my career in marketing and business development in the healthcare and pharmaceutical industry, where the job was always to understand what people really needed before offering anything.</p>

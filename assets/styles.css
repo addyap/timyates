@@ -777,3 +777,8 @@ p, li, .svc-desc { text-wrap: pretty; }
 @media (max-width: 900px) {
   .scene, .portrait-img, .hero-eyebrow, .hero h1 .line > span, .hero-lead, .hero-cta, .hero-proof { animation: none; }
 }
+
+/* Phones: no filters on Tim's photo; the warm tone and soft shadow slowed the first frame on PageSpeed's throttled phone */
+@media (max-width: 900px) {
+  .portrait-img { filter: none; }
+}

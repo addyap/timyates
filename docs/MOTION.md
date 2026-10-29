@@ -36,18 +36,16 @@ Code: tokens and components in `assets/styles.css` (section "Motion system"), be
 
 ## Loading sequences
 
-**Home (hero), total about 1.2s to fully readable:**
+**Home (hero), total about 0.9s to fully readable** (shortened so the headline paints early for PageSpeed):
 
 | Time | What |
 |---|---|
-| 0ms | Sky fades in (1.4s), sun rises 70px into place (2s) |
-| 100ms | Horizon hairline draws outward from the sun (1.4s, draw) |
-| 150ms | Eyebrow rises |
-| 200ms | Tim rises 40px into the scene and fades in (1.6s); his backlight glows up from 500ms |
-| 250 / 400ms | Headline lines slide up out of their masks |
-| 600ms | Lead paragraph rises |
-| 750ms | Buttons rise |
-| 1000ms | Proof strip fades in |
+| 0ms | Villefranche photo fades in (0.5s) |
+| 50ms | Eyebrow rises (0.5s); Tim rises 40px into the scene and fades in (0.9s) |
+| 50 / 140ms | Headline lines slide up out of their masks (0.75s) |
+| 300ms | Lead paragraph rises (0.6s) |
+| 400ms | Buttons rise (0.6s) |
+| 500ms | Proof strip fades in (0.6s) |
 
 **Inner pages:** the page header reveals at load: eyebrow hairline draws (0ms), heading wipes up (80ms), intro rises (160ms). Under 1s.
 

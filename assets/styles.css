@@ -732,3 +732,13 @@ p, li, .svc-desc { text-wrap: pretty; }
   .hero-proof::before { content: ""; position: absolute; z-index: -1; top: -48px; bottom: 0; left: -100vw; right: -100vw; pointer-events: none;
     background: linear-gradient(180deg, rgba(8,30,50,0) 0%, rgba(8,30,50,.72) 48px, rgba(8,30,50,.88) 100%); }
 }
+
+/* Narrow desktops and upright tablets (821–1080px): a tighter menu so all six links and the button stay on one line */
+@media (min-width: 821px) and (max-width: 1080px) {
+  .nav { gap: 16px; }
+  .nav a { font-size: .86rem; }
+  .nav .btn { padding: 8px 14px; font-size: .86rem; }
+  .brand img { width: 36px; height: 36px; }
+  .brand strong { font-size: 1.1rem; }
+  .brand .brand-group { font-size: .74rem; }
+}

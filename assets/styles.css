@@ -753,7 +753,8 @@ p, li, .svc-desc { text-wrap: pretty; }
 /* ================= Text moments =================
    Three one-off touches, each played once: a gold light passes over the hero promise,
    the Spectrum figures count up, and the pull quote arrives word by word. */
-@media (prefers-reduced-motion: no-preference) {
+/* Desktop only: on phones the repainting sweep cost PageSpeed about 4 points (Speed Index), so phones keep plain gold */
+@media (prefers-reduced-motion: no-preference) and (min-width: 901px) {
   /* "financially in order.": sun catching gilt lettering, once, after the line lands.
      Padding gives italic overhangs room inside the clipped background. */
   .hero h1 em { padding: 0 .12em .12em .06em; margin: 0 -.12em -.12em -.06em;
@@ -762,7 +763,8 @@ p, li, .svc-desc { text-wrap: pretty; }
     text-shadow: none; filter: drop-shadow(0 1px 12px rgba(8,30,50,.45));
     animation: gild 1s var(--ease-soft) .7s both; }
   @keyframes gild { from { background-position: 100% 0; } to { background-position: 0 0; } }
-
+}
+@media (prefers-reduced-motion: no-preference) {
   /* Pull quote: words rise into place one after another, as if spoken */
   .js .pull .w { display: inline-block; opacity: 0; translate: 0 .35em; transition: opacity .5s ease-out, translate .7s var(--ease-settle); transition-delay: calc(350ms + var(--w) * 70ms); }
   .js .is-in .pull .w { opacity: 1; translate: none; }

@@ -61,7 +61,7 @@ Code: tokens and components in `assets/styles.css` (section "Motion system"), be
 
 Three one-off touches, each played once, all off with reduced motion:
 
-- **Gilded promise:** after the hero headline lands, a soft band of light passes once across "financially in order." (1s from 0.7s), like sun catching gilt lettering. CSS only: a gradient clipped to the text.
+- **Gilded promise:** after the hero headline lands, a soft band of light passes once across "financially in order." (1s from 0.7s), like sun catching gilt lettering. CSS only: a gradient clipped to the text. Desktop only: on phones the repaint cost about 4 PageSpeed points.
 - **Spectrum figures:** "50+" and "7" count up from zero over 0.9s (ease-out) when they are 60% in view. "2003" doesn't count, because counting up a year reads as silly. The real values are in the HTML.
 - **Pull quote:** "Listen first. Explain simply…" arrives word by word, 70ms apart, once its column reveals. The words stay separated by plain spaces, so it reads and wraps normally.
 - **Signature:** "Tim Yates" under the About text writes itself left to right (clip-path wipe, 1.4s from 0.5s).

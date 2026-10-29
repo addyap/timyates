@@ -33,6 +33,14 @@ const updateHeader = (y = window.scrollY) => {
 };
 onScroll.push(updateHeader);
 
+// Pull quote: split into words so they can arrive one after another (spaces stay as text, so it reads and wraps normally)
+if (!calm) {
+  document.querySelectorAll(".pull").forEach((q) => {
+    const words = q.textContent.trim().split(/\s+/);
+    q.innerHTML = words.map((w, i) => `<span class="w" style="--w:${i}">${w}</span>`).join(" ");
+  });
+}
+
 // Scroll reveals: each element once, then forgotten
 const reveals = document.querySelectorAll("[data-reveal]");
 reveals.forEach((el) => {
@@ -50,6 +58,25 @@ if (calm || !("IntersectionObserver" in window)) {
     });
   }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
   reveals.forEach((el) => io.observe(el));
+}
+
+// Spectrum figures count up once when they come into view; the real value is in the HTML for everyone else
+const counters = document.querySelectorAll("[data-count]");
+if (counters.length && !calm && "IntersectionObserver" in window) {
+  const run = (el) => {
+    const end = Number(el.dataset.count), suffix = el.dataset.suffix || "", t0 = performance.now(), dur = 900;
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / dur), eased = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(end * eased) + suffix;
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  counters.forEach((el) => { el.textContent = "0" + (el.dataset.suffix || ""); });
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { run(e.target); cio.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  counters.forEach((el) => cio.observe(el));
 }
 
 // "How it works": the progress line fills and steps light up as they pass 60% of the screen

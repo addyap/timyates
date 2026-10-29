@@ -329,8 +329,8 @@ def build_home():
       <a href="https://spectrum-ifa.com/" rel="noopener"><img src="/assets/spectrum-logo.webp" alt="The Spectrum IFA Group, International Financial Advisers" width="480" height="223" loading="lazy"></a>
       <ul class="spectrum-facts">
         <li><strong>2003</strong>established</li>
-        <li><strong>50+</strong>advisers across Europe</li>
-        <li><strong>7</strong>countries</li>
+        <li><strong data-count="50" data-suffix="+">50+</strong>advisers across Europe</li>
+        <li><strong data-count="7">7</strong>countries</li>
       </ul>
     </div>
     <div class="spectrum-copy" data-reveal="head">

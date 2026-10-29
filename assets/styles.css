@@ -749,3 +749,22 @@ p, li, .svc-desc { text-wrap: pretty; }
   .js .about-text .signature { clip-path: inset(-10% 100% -10% 0); transition: clip-path 1.4s var(--ease-soft) .5s; }
   .js .about-text.is-in .signature { clip-path: inset(-10% 0 -10% 0); }
 }
+
+/* ================= Text moments =================
+   Three one-off touches, each played once: a gold light passes over the hero promise,
+   the Spectrum figures count up, and the pull quote arrives word by word. */
+@media (prefers-reduced-motion: no-preference) {
+  /* "financially in order.": sun catching gilt lettering, once, after the line lands.
+     Padding gives italic overhangs room inside the clipped background. */
+  .hero h1 em { padding: 0 .12em .12em .06em; margin: 0 -.12em -.12em -.06em;
+    background: linear-gradient(100deg, var(--sun) 0 40%, #fff6d8 50%, var(--sun) 60% 100%) 100% 0 / 300% 100% no-repeat;
+    -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+    text-shadow: none; filter: drop-shadow(0 1px 12px rgba(8,30,50,.45));
+    animation: gild 1.5s var(--ease-soft) 1s both; }
+  @keyframes gild { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+  /* Pull quote: words rise into place one after another, as if spoken */
+  .js .pull .w { display: inline-block; opacity: 0; translate: 0 .35em; transition: opacity .5s ease-out, translate .7s var(--ease-settle); transition-delay: calc(350ms + var(--w) * 70ms); }
+  .js .is-in .pull .w { opacity: 1; translate: none; }
+}
+.spectrum-facts strong { font-variant-numeric: tabular-nums; }

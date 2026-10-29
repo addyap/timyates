@@ -57,6 +57,15 @@ Code: tokens and components in `assets/styles.css` (section "Motion system"), be
 - **Body text and labels:** fade and rise `--rise` over `--dur-reveal`.
 - **Section labels (eyebrows):** the gold hairline before the label draws from 0 to full width (`scaleX`, `--ease-draw`), then the text fades in.
 
+## Text moments
+
+Three one-off touches, each played once, all off with reduced motion:
+
+- **Gilded promise:** after the hero headline lands, a soft band of light passes once across "financially in order." (1.5s from 1s), like sun catching gilt lettering. CSS only: a gradient clipped to the text.
+- **Spectrum figures:** "50+" and "7" count up from zero over 0.9s (ease-out) when they are 60% in view. "2003" doesn't count, because counting up a year reads as silly. The real values are in the HTML.
+- **Pull quote:** "Listen first. Explain simply…" arrives word by word, 70ms apart, once its column reveals. The words stay separated by plain spaces, so it reads and wraps normally.
+- **Signature:** "Tim Yates" under the About text writes itself left to right (clip-path wipe, 1.4s from 0.5s).
+
 ## Image transitions
 
 - **Hero portrait:** Tim is cut out of his background and stands in the dusk scene, backlit by a gold rim of light, his jacket dissolving into the sea. He rises 40px into place on load.

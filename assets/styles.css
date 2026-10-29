@@ -1,4 +1,9 @@
 /* Tim Yates: financial adviser site */
+/* Fonts served from the site (Latin subsets from Google Fonts, SIL Open Font License; see assets/fonts/README.md) */
+@font-face { font-family: "Fraunces"; font-style: normal; font-weight: 400 500; font-display: swap;
+  src: url("/assets/fonts/fraunces-latin.woff2?v=175f6e93") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400 600; font-display: swap;
+  src: url("/assets/fonts/inter-latin.woff2?v=1dc044f4") format("woff2"); }
 :root {
   --ink: #16242f;
   --ink-soft: #46555f;

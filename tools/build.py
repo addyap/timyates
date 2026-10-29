@@ -154,6 +154,14 @@ def jsonld(data):
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
 
 
+def signature():
+    """Tim's name in a handwriting font (Mrs Saint Delafield, SIL OFL), outlined to a path in assets/tim-signature.svg.
+    Deliberately not his real signature, so there's nothing on the site worth copying onto a document."""
+    svg = (ROOT / "assets" / "tim-signature.svg").read_text(encoding="utf-8").strip()
+    svg = svg.replace('<svg xmlns="http://www.w3.org/2000/svg"', '<svg class="signature" role="img" aria-label="Tim Yates" focusable="false"', 1)
+    return svg
+
+
 def contact_band():
     return f"""<section class="contact-band" id="contact" data-reveal="band">
   <div class="wrap contact-grid">
@@ -309,6 +317,7 @@ def build_home():
       <p>Before financial services I spent my career in marketing and business development in the healthcare and pharmaceutical industry, where the job was always to understand what people really needed before offering anything.</p>
       <p>I'm a founding partner of The Spectrum IFA Group, which advises English-speaking clients across Europe, and I run Spectrum International Mortgages, the group's mortgage brokerage. My work centres on assurance vie, tax-efficient wealth management, and finding the right mortgage for each property purchase in France, including asset-backed lending.</p>
       <p>I live in Fréjus. When I'm not working you'll find me skiing in the Alps or diving in the Mediterranean.</p>
+      {signature()}
       <div class="btn-row"><a class="btn" href="#contact">Get in touch</a></div>
     </div>
   </div>

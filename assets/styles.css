@@ -742,3 +742,10 @@ p, li, .svc-desc { text-wrap: pretty; }
   .brand strong { font-size: 1.1rem; }
   .brand .brand-group { font-size: .74rem; }
 }
+
+/* Signature at the end of Tim's About text: gold, as if signed in ink, written left to right when the text arrives */
+.signature { display: block; width: clamp(170px, 18vw, 220px); height: auto; color: var(--accent); margin: 18px 0 6px -6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .about-text .signature { clip-path: inset(-10% 100% -10% 0); transition: clip-path 1.4s var(--ease-soft) .5s; }
+  .js .about-text.is-in .signature { clip-path: inset(-10% 0 -10% 0); }
+}

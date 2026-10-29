@@ -6,3 +6,5 @@ Latin subsets of two variable fonts, downloaded from Google Fonts on 29 October 
 - `inter-latin.woff2`: Inter (Rasmus Andersson), weights 400 to 600
 
 Both are licensed under the SIL Open Font License 1.1: https://openfontlicense.org
+
+- `tim-signature.svg` (in `assets/`): "Tim Yates" in Mrs Saint Delafield (Sudtipos), outlined to a single path, SIL Open Font License 1.1. Not his real signature.

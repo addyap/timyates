@@ -46,6 +46,17 @@ def version_assets(text):
     return ASSET_REF.sub(lambda m: f"/assets/{m.group(1)}?v={asset_hash(m.group(1))}", text)
 
 
+@functools.cache
+def inline_css():
+    """styles.css, minified, for a <style> block in every page: no stylesheet request before first paint.
+    Comments go and whitespace collapses; the file stays the readable source."""
+    css = (ROOT / "assets" / "styles.css").read_text(encoding="utf-8")
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s+", " ", css)
+    css = re.sub(r"\s*([{};,>])\s*", r"\1", css)
+    return css.replace(";}", "}").strip()
+
+
 def version_stylesheet():
     """Stamps the image links inside styles.css; run before anything hashes styles.css."""
     css = ROOT / "assets" / "styles.css"
@@ -128,7 +139,7 @@ def page(path, title, description, body, current, extra_head="", body_class=""):
 <script>document.documentElement.classList.add("js")</script>
 <link rel="preload" as="font" href="/assets/fonts/fraunces-latin.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="/assets/fonts/inter-latin.woff2" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css">
+<style>{inline_css()}</style>
 {preload}
 {extra_head}
 </head>

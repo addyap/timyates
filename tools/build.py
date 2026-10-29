@@ -106,7 +106,7 @@ def page(path, title, description, body, current, extra_head="", body_class=""):
     og_url = f'<meta property="og:url" content="{SITE}{path}">' if SITE else ""
     # The hero photo is a CSS background, so preload it or it waits for the stylesheet;
     # normal priority, so it never holds up the stylesheet itself
-    preload = ('<link rel="preload" as="image" href="/assets/tim-cutout.webp" imagesrcset="/assets/tim-cutout-sm.webp 600w, /assets/tim-cutout.webp 1040w" imagesizes="(min-width: 901px) 520px, 300px" type="image/webp" fetchpriority="high">\n'
+    preload = ('<link rel="preload" as="image" href="/assets/tim-cutout.webp" imagesrcset="/assets/tim-cutout-sm.webp 600w, /assets/tim-cutout.webp 1040w" imagesizes="(min-width: 901px) 520px, 300px" type="image/webp">\n'
                '<link rel="preload" as="image" href="/assets/riviera.webp" type="image/webp" media="(min-width: 901px)">\n'
                '<link rel="preload" as="image" href="/assets/riviera-sm.webp" type="image/webp" media="(max-width: 900px)">') if path == "/" else ""
     out = f"""<!doctype html>
@@ -128,7 +128,7 @@ def page(path, title, description, body, current, extra_head="", body_class=""):
 <script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;600&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/styles.css">
 {preload}

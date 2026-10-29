@@ -711,3 +711,24 @@ p, li, .svc-desc { text-wrap: pretty; }
 .hero-proof .proof-spectrum { display: flex; align-items: center; gap: 12px; }
 .hero-proof .proof-spectrum img { width: 34px; height: 34px; flex: none; }
 @media (max-width: 900px) { .hero-proof .proof-spectrum img { width: 24px; height: 24px; } }
+
+/* ================= Tim in the photo =================
+   The old dissolve mask suited the painted sea; over a detailed photo it made his jacket see-through.
+   Desktop: solid, with only a soft feather where the frame crops his shoulders and at the very bottom.
+   A light warm tone and a shadow pool behind him sit him in the afternoon light. */
+.portrait-img { filter: grayscale(1) sepia(.2) contrast(1.06) brightness(1.02) drop-shadow(0 20px 40px rgba(8,30,50,.5)); }
+@media (min-width: 901px) {
+  .portrait-img {
+    -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 11%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 11%, #000 92%, transparent 100%); }
+  .scene { background:
+    radial-gradient(34% 60% at 76% 62%, rgba(8,30,50,.42) 0%, rgba(8,30,50,0) 100%),
+    linear-gradient(0deg, rgba(8,30,50,.8) 0%, rgba(8,30,50,0) 32%),
+    linear-gradient(180deg, rgba(8,30,50,.62) 0%, rgba(8,30,50,0) 26%),
+    linear-gradient(90deg, rgba(8,30,50,.75) 0%, rgba(8,30,50,.5) 42%, rgba(8,30,50,.1) 72%, rgba(8,30,50,0) 100%),
+    url("/assets/riviera.webp?v=29c4f369") center 55% / cover no-repeat; }
+  /* The facts strip becomes its own band in front of Tim */
+  .hero-proof { z-index: 1; }
+  .hero-proof::before { content: ""; position: absolute; z-index: -1; top: -48px; bottom: 0; left: -100vw; right: -100vw; pointer-events: none;
+    background: linear-gradient(180deg, rgba(8,30,50,0) 0%, rgba(8,30,50,.72) 48px, rgba(8,30,50,.88) 100%); }
+}

@@ -645,6 +645,11 @@ p, li, .svc-desc { text-wrap: pretty; }
 .portrait-img { filter: contrast(1.05) drop-shadow(0 20px 40px rgba(8,30,50,.45)); }
 @media (prefers-reduced-motion: no-preference) { .scene { animation: fadeIn 1.2s ease-out both; } }
 
+/* Desktop: no painted horizon to stand on any more, so Tim stands taller, head level with the headline */
+@media (min-width: 901px) {
+  .portrait { margin-bottom: clamp(-150px, -9vw, -50px); }
+}
+
 /* Phones: Tim in front of the bay, the words on the darkened lower half */
 @media (max-width: 900px) {
   .scene { background:

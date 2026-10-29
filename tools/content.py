@@ -7,6 +7,7 @@ where they can change. Tim does not speak French: never imply he does.
 POSTS = [
     {
         "slug": "assurance-vie-explained",
+        "seo_title": "Assurance vie explained for expats in France",
         "tag": "Investments",
         "title": "Assurance vie explained: why it suits so many people living in France",
         "summary": "It isn't life insurance in the British sense. It's France's most popular savings wrapper, and for French residents it can be remarkably tax-efficient.",
@@ -43,6 +44,7 @@ POSTS = [
     },
     {
         "slug": "buying-a-home-in-france-with-a-mortgage",
+        "seo_title": "Buying a home in France with a mortgage",
         "tag": "Mortgages",
         "title": "Buying a home in France with a mortgage: how it really works",
         "summary": "French lenders follow strict rules and the process runs in a different order from the UK. Knowing it in advance saves stress, and sometimes the purchase.",
@@ -81,6 +83,7 @@ POSTS = [
     },
     {
         "slug": "asset-backed-mortgages",
+        "seo_title": "Asset-backed mortgages in France explained",
         "tag": "Mortgages",
         "title": "Asset-backed mortgages: borrowing against your investments",
         "summary": "Keep your portfolio invested and use it to secure the loan for your French property. Here's how it works, who it suits, and the risks to weigh.",
@@ -117,6 +120,7 @@ POSTS = [
     },
     {
         "slug": "moving-to-france-money-checklist",
+        "seo_title": "Moving to France: a money checklist",
         "tag": "Moving to France",
         "title": "Moving to France: a money checklist for before and after you arrive",
         "summary": "Becoming French tax resident changes how your savings, ISAs and pensions are treated. These are the things to sort out, ideally before you move.",

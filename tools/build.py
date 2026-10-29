@@ -4,9 +4,12 @@
 Text for the blog and FAQ lives in tools/content.py. Shared header, footer
 and page shell live here. Output is written to the repo root.
 """
+import functools
+import hashlib
 import html
 import json
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -27,6 +30,26 @@ NAV = [("/", "Home"), ("/#services", "How I help"), ("/#about", "About"), ("/blo
 
 def esc(s):
     return html.escape(s, quote=True)
+
+
+# Every /assets/ link carries ?v=<content hash>, so vercel.json can let browsers keep them for a year;
+# a changed file gets a new hash and is fetched fresh.
+ASSET_REF = re.compile(r'(?<=["( ])/assets/([\w.\-/]+?)(?:\?v=[0-9a-f]+)?(?=[") ])')
+
+
+@functools.cache
+def asset_hash(name):
+    return hashlib.sha1((ROOT / "assets" / name).read_bytes()).hexdigest()[:8]
+
+
+def version_assets(text):
+    return ASSET_REF.sub(lambda m: f"/assets/{m.group(1)}?v={asset_hash(m.group(1))}", text)
+
+
+def version_stylesheet():
+    """Stamps the image links inside styles.css; run before anything hashes styles.css."""
+    css = ROOT / "assets" / "styles.css"
+    css.write_text(version_assets(css.read_text(encoding="utf-8")), encoding="utf-8")
 
 
 def header(current):
@@ -82,7 +105,7 @@ def page(path, title, description, body, current, extra_head="", body_class=""):
     canonical = f'<link rel="canonical" href="{SITE}{path}">' if SITE else ""
     og_url = f'<meta property="og:url" content="{SITE}{path}">' if SITE else ""
     # The hero photo is a CSS background, so preload it or it waits for the stylesheet
-    preload = ('<link rel="preload" as="image" href="/assets/tim-cutout.webp" type="image/webp" fetchpriority="high">\n'
+    preload = ('<link rel="preload" as="image" href="/assets/tim-cutout.webp" imagesrcset="/assets/tim-cutout-sm.webp 600w, /assets/tim-cutout.webp 1040w" imagesizes="(min-width: 901px) 520px, 300px" type="image/webp" fetchpriority="high">\n'
                '<link rel="preload" as="image" href="/assets/riviera.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">\n'
                '<link rel="preload" as="image" href="/assets/riviera-sm.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high">') if path == "/" else ""
     out = f"""<!doctype html>
@@ -118,7 +141,7 @@ def page(path, title, description, body, current, extra_head="", body_class=""):
 </body>
 </html>
 """
-    out = "\n".join(line for line in out.split("\n") if line.strip() != "")
+    out = version_assets("\n".join(line for line in out.split("\n") if line.strip() != ""))
     target = ROOT / path.lstrip("/")
     if path.endswith("/"):
         target = target / "index.html"
@@ -228,7 +251,7 @@ def build_home():
     </div>
     <figure class="portrait">
       <div class="portrait-glow" aria-hidden="true"></div>
-      <img class="portrait-img" src="/assets/tim-cutout.webp" alt="Portrait of Tim Yates" width="666" height="1000" fetchpriority="high">
+      <img class="portrait-img" src="/assets/tim-cutout.webp" srcset="/assets/tim-cutout-sm.webp 600w, /assets/tim-cutout.webp 1040w" sizes="(min-width: 901px) 520px, 300px" alt="Portrait of Tim Yates" width="1040" height="1560" fetchpriority="high">
     </figure>
   </div>
   <ul class="hero-proof wrap">
@@ -354,7 +377,7 @@ def build_blog():
   </div>
 </article>
 {contact_band()}"""
-        paths.append(page(f"/blog/{p['slug']}/", f"{p['title']} | Tim Yates", p["summary"], body, "/blog/", jsonld(art)))
+        paths.append(page(f"/blog/{p['slug']}/", f"{p.get('seo_title', p['title'])} | Tim Yates", p["summary"], body, "/blog/", jsonld(art)))
     return paths
 
 
@@ -409,6 +432,7 @@ def build_meta(paths):
 
 
 if __name__ == "__main__":
+    version_stylesheet()
     paths = [build_home(), *build_blog(), build_faq()]
     build_404()
     build_meta(paths)

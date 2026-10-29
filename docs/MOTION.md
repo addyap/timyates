@@ -36,7 +36,7 @@ Code: tokens and components in `assets/styles.css` (section "Motion system"), be
 
 ## Loading sequences
 
-**Home (hero), total about 0.9s to fully readable** (shortened so the headline paints early for PageSpeed). **Desktop only:** on phones (900px and narrower) the hero is complete from the first frame, because PageSpeed's throttled phone test counts every entrance frame against Speed Index:
+**Home (hero), total about 0.9s to fully readable** (shortened so the headline paints early for PageSpeed).:
 
 | Time | What |
 |---|---|

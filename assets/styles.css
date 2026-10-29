@@ -771,14 +771,3 @@ p, li, .svc-desc { text-wrap: pretty; }
 }
 .spectrum-facts strong { font-variant-numeric: tabular-nums; }
 
-/* Phones: the hero is complete from the first frame, no entrance.
-   On PageSpeed's throttled phone every frame of the entrance counted against Speed Index (1.3 s to 4.7 s,
-   score 99 to 95). Desktop keeps the full sequence; further down the page phones keep their reveals. */
-@media (max-width: 900px) {
-  .scene, .portrait-img, .hero-eyebrow, .hero h1 .line > span, .hero-lead, .hero-cta, .hero-proof { animation: none; }
-}
-
-/* Phones: no filters on Tim's photo; the warm tone and soft shadow slowed the first frame on PageSpeed's throttled phone */
-@media (max-width: 900px) {
-  .portrait-img { filter: none; }
-}
